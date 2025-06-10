@@ -221,7 +221,7 @@
 
       <div class="mt-auto flex justify-between items-center p-4 border-t border-blue-700">
         <div class="text-sm">
-          <img src="your-logo.png" alt="Your Logo" class="h-8 mr-2 inline-block"> BBWS Citanduy
+          <img src="/img/cty-logo-gray.png" alt="CTY Logo" class="h-8 mr-2 inline-block">
         </div>
         <div>
           <a href="#" class="text-white hover:text-blue-200">Login</a>
