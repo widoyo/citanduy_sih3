@@ -65,10 +65,16 @@
     }
     isInformasiOpen = !isInformasiOpen;
   }
+
+  // Navigate and closeAllSubmenus
+  function navigateAndClose() {
+    isMenuOpen = false;
+    closeAllSubmenus();
+  }
 </script>
 
 <header class="bg-gray-800/50 text-white p-4 relative z-50"> <div class="container mx-auto flex justify-between items-center">
-    <h1 class="text-xl font-bold">BBWS Citanduy</h1>
+    <a href="/"><h1 class="text-xl font-bold">BBWS Citanduy</h1></a>
 
     <button
       class="text-white focus:outline-none relative z-50"
@@ -130,9 +136,9 @@
               {isHidrologiOpen ? 'max-h-screen' : 'max-h-0'}
             "
           >
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">INFORMASI CURAH HUJAN</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">INFORMASI TINGGI MUKA AIR</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">INFORMASI KUALITAS AIR</a></li>
+            <li><a href="/h1/hujan" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>INFORMASI CURAH HUJAN</a></li>
+            <li><a href="/h1/tma" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>INFORMASI TINGGI MUKA AIR</a></li>
+            <li><a href="/h1/ka" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>INFORMASI KUALITAS AIR</a></li>
           </ul>
         </li>
 
@@ -158,7 +164,7 @@
               {isHidrometeorologiOpen ? 'max-h-screen' : 'max-h-0'}
             "
           >
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">INFORMASI IKLIM DAN CUACA</a></li>
+            <li><a href="/h2/cuaca" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>INFORMASI IKLIM DAN CUACA</a></li>
           </ul>
         </li>
 
@@ -184,8 +190,8 @@
               {isHidrogeologiOpen ? 'max-h-screen' : 'max-h-0'}
             "
           >
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">INFORMASI MUKA AIR TANAH</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">SUMUR PANTAU</a></li>
+            <li><a href="/h3/mat" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>INFORMASI MUKA AIR TANAH</a></li>
+            <li><a href="/h3/sp" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>SUMUR PANTAU</a></li>
           </ul>
         </li>
 
@@ -211,9 +217,9 @@
               {isInformasiOpen ? 'max-h-screen' : 'max-h-0'}
             "
           >
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">BERITA / PENGUMUMAN</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">EARLY WARNING SYSTEM</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">HUBUNGI KAMI</a></li>
+            <li><a href="/informasi/berita" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>BERITA / PENGUMUMAN</a></li>
+            <li><a href="/informasi/ews" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>EARLY WARNING SYSTEM</a></li>
+            <li><a href="/informasi/hubungi_kami" class="block px-4 py-2 hover:bg-blue-600" on:click={navigateAndClose}>HUBUNGI KAMI</a></li>
           </ul>
         </li>
 

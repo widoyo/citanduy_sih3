@@ -4,7 +4,7 @@
 </svelte:head>
 
 <section class="flex justify-center items-center min-h-screen bg-gray-900">
-  <button class="
+  <a href="/geo" class="
     bg-transparent          /* Makes the background transparent */
     border                  /* Adds a border */
     border-white            /* Sets the border color to white */
@@ -18,5 +18,5 @@
     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 /* Optional: focus ring for accessibility */
   ">
     Geospatial
-  </button>
+  </a>
 </section>
