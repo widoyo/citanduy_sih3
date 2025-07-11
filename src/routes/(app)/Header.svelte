@@ -230,7 +230,7 @@
           <img src="/img/cty-logo-gray.png" alt="CTY Logo" class="h-8 mr-2 inline-block">
         </div>
         <div>
-          <a href="#" class="text-white hover:text-blue-200">Login</a>
+          <a href="/" class="text-white hover:text-blue-200">Login</a>
         </div>
       </div>
     </nav>
