@@ -19,6 +19,9 @@ const config = {
 				exclude: ['<all>']
 			}
 		}),
+		prerender: {
+			handleHttpError: 'ignore'
+		}
 	}
 };
 
