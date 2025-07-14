@@ -17,9 +17,10 @@
       <p class="text-5xl text-gray-600 mt-5"><img src="/img/logo-pupr.png" alt="" class="inline me-3 pb-2">BBWS Citanduy</p>
     </div>
     <div class="w-full md:w-1/2 items-center justify-center">
+      <span class="bg-gray-500 text-white px-1">BERITA KEGIATAN</span>
       <ul class="list-disc">
       {#each data.berita as item}
-        <li><a href="https://sda.pu.go.id/balai/bbwscitanduy/{item.a_href}" title="{item.a_title}"><TruncatedText text={item.a_title} /></a></li>
+        <li>BBWS CTY - <a href="https://sda.pu.go.id/balai/bbwscitanduy/{item.a_href}" title="{item.a_title}"><TruncatedText text={item.a_title} /></a></li>
       {/each}
       </ul>
     </div>
@@ -35,7 +36,7 @@
 
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:gap-4">
   {#each data.prakiraanList as item}
-  <div class="max-w mx-auto bg-white shadow-sm rounded-sm p-2 border border-gray-300">
+  <div class="bg-white shadow-sm rounded-sm p-2 border border-gray-300">
     <a href="https://www.bmkg.go.id{item.href}"><h3 class="text-md text-center text-gray-800 mb-2 md:tracking-wide">{item.city} <ArrowUpRightFromSquareOutline class="inline" size="sm" /></h3></a>
     <div class="flex flex-col md:flex-row justify-between gap-2">
       <!-- Today -->
