@@ -40,6 +40,48 @@ export async function parsePrakiraan(html: string) {
             days.push(h.textContent.trim());
         }
     }
+    //console.log('Parsed days:', days);
+    // Create an array to hold the forecast data for each day
+    const forecastData = [];
+    for (const row of bodyTable) {
+        const cells = row.querySelectorAll<HTMLTableCellElement>('td');
+        if (cells.length > 0) {
+            const dayData = {};
+            // first column is the city name, take name and href
+            const cityLink = cells[0].querySelector<HTMLAnchorElement>('a');
+            if (cityLink && cityLink.textContent) {
+                dayData['city'] = cityLink.textContent.trim();
+                dayData['href'] = cityLink.href;
+            } else {
+                dayData['city'] = cells[0].textContent.trim();
+            }
+            // Loop through column 1 (prakiraan cuaca) to the end of the row
+            for (let i = 1; i < cells.length; i++) {
+                const cell = cells[i];
+                if (cell.textContent) {
+                    const [, rain, temperature, humidity] = cell.textContent.trim().match(/([a-zA-Z\s]+)(\d+–\d+\s°C)(\d+–\d+%)/).map(s => s.trim());
+                    const svgElements = cell.querySelectorAll('svg');
 
-    return bodyTable.length;
+                    dayData[`hari_` + i] = {
+                        tanggal: days[i], 
+                        cuaca: rain, 
+                        suhu: temperature, 
+                        kelembaban: humidity,
+                        cuaca_icon: svgElements[0].outerHTML
+                    };
+                }
+            }
+            forecastData.push(dayData);
+        }
+    }
+    //console.log('Parsed forecast data:', forecastData);
+    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'pangandaran', 'cilacap', 'banyumas', 'kadipaten'];
+    // Filter the forecast data to include only the word of cities we are interested in
+    const filteredForecast = forecastData.filter((data) => {
+        return kotas.some((kota) => {
+            return data.city.toLowerCase().includes(kota);
+        });
+    });
+    console.log('Filtered forecast data:', filteredForecast);
+    return filteredForecast;
 }

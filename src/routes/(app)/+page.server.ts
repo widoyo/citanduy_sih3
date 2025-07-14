@@ -4,15 +4,17 @@ export const prerender = true;
 import type { PageLoad } from './$types';
 
 
-import { fetchPrakiraan, getTitle, parsePrakiraan } from '$lib/data/prakiraanFetcher.ts';
+import { fetchPrakiraan, parsePrakiraan } from '$lib/data/prakiraanFetcher.ts';
+import { fetchBeritaCty, getArticles } from '$lib/data/beritaGrabber.ts';
 
 export const load: PageLoad = async () => {
     const html = await fetchPrakiraan();
-    const title = await getTitle(html);
-    const days = await parsePrakiraan(html);
-    console.log(title);
+    const prakiraanList = await parsePrakiraan(html);
+
+    const beritaHtml = await fetchBeritaCty();
+    const beritaTitle = await getArticles(beritaHtml);
     return {
-        title,
-        days
+        prakiraanList,
+        beritaTitle
     };
 }
