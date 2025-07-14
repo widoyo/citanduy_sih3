@@ -12,9 +12,9 @@ export const load: PageLoad = async () => {
     const prakiraanList = await parsePrakiraan(html);
 
     const beritaHtml = await fetchBeritaCty();
-    const beritaTitle = await getArticles(beritaHtml);
+    const berita = await getArticles(beritaHtml);
     return {
         prakiraanList,
-        beritaTitle
+        berita
     };
 }

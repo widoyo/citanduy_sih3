@@ -27,7 +27,6 @@
 		"@tailwindcss/vite": "^4.0.0",
 		"@types/better-sqlite3": "^7.6.13",
 		"clsx": "^2.1.1",
-		"drizzle-kit": "^0.31.4",
 		"embla-carousel-svelte": "^8.6.0",
 		"flowbite-svelte": "^1.0.0-next.20",
 		"flowbite-svelte-icons": "^2.2.1",
@@ -43,11 +42,7 @@
 	},
 	"dependencies": {
 		"better-sqlite3": "^12.2.0",
-		"daisyui": "^5.0.43",
 		"dotenv": "^17.0.0",
-		"drizzle-orm": "^0.44.2",
-		"linkedom": "^0.18.11",
-		"mode-watcher": "^1.1.0",
-		"ts-node": "^10.9.2"
+		"linkedom": "^0.18.11"
 	}
 }

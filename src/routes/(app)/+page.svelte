@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageProps } from './$types';
   import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
+  import TruncatedText  from '$lib/components/TruncatedText.svelte';
   let { data }: PageProps = $props();
 </script>
 
@@ -15,11 +16,12 @@
       <p class="text-4xl text-gray-400 my-4 font-light">Sistem Informasi<br>Hidro&nbsp;Meteorologi, Hidrologi dan Hidro&nbsp;Geologi</p>
       <p class="text-5xl text-gray-600 mt-5"><img src="/img/logo-pupr.png" alt="" class="inline me-3 pb-2">BBWS Citanduy</p>
     </div>
-    <div class="w-full md:w-1/2 items-center flex justify-center">
-      <img src="/img/logo_h3.png" alt="logo" class="" />
-      {#each data.beritaTitle as item}
-      <p>{item}</p>
+    <div class="w-full md:w-1/2 items-center justify-center">
+      <ul class="list-disc">
+      {#each data.berita as item}
+        <li><a href="https://sda.pu.go.id/balai/bbwscitanduy/{item.a_href}" title="{item.a_title}"><TruncatedText text={item.a_title} /></a></li>
       {/each}
+      </ul>
     </div>
   </div>
 </section>

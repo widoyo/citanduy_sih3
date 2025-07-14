@@ -32,13 +32,13 @@ export async function getArticles(html: string): Promise<string> {
     const articles = document.querySelectorAll<HTMLHeadingElement>('div.body > article > a');
     if (articles.length > 0) {
         console.log('Found articles:', articles.length);
-        Array.from(articles).map((article) => {
-            console.log('Article:', article.textContent?.trim());
-            const a_berita = article.querySelector<HTMLAnchorElement>('a');
-            console.log('Article:', a_berita?.textContent?.trim(), a_berita?.href);
+        return Array.from(articles).map((article) => {
+            console.log('Article:', article.querySelector<HTMLHeadingElement>('h4').textContent);
+            const a_href = article.href;
+            const a_title = article.querySelector<HTMLHeadingElement>('h4').textContent.trim();
             return {
-                title: a_berita?.textContent?.trim() || '',
-                href: a_berita?.href || ''
+                a_href,
+                a_title
             };
         });
     } else {
