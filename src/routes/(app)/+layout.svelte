@@ -25,10 +25,10 @@
 		</NavLi>
 	</NavUl>
 </Navbar>
-<div class="container mx-auto mt-20">
+<div class="container px-12 mt-20">
   {@render children()}
 </div>
-<div class="flex justify-center items-center p-4">
+<div class="flex justify-center items-center p-4 mt-20">
 	<p class="text-sm text-muted-foreground">Made with svelte</p>
   	<p class="text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
 </div>
