@@ -20,7 +20,7 @@ const config = {
 			}
 		}),
 		prerender: {
-			handleHttpError: 'ignore'
+			handleHttpError: 'warn'
 		}
 	}
 };

@@ -1,0 +1,25 @@
+<script lang="ts">
+    import { Navbar, NavBrand, NavHamburger, NavUl, NavLi, MegaMenu, Button } from "flowbite-svelte";
+    import { GlobeOutline } from "flowbite-svelte-icons";
+</script>
+
+<Navbar class="fixed start-0 top-0 z-2000 bg-gray-200/10 backdrop-blur border-b border-gray-200 h-[70px] px-4 flex items-center">
+	<NavBrand href="/" class="flex items-center">
+		<span class="font-extrabold me-3">SIH3</span> BBWS Citanduy
+	</NavBrand>
+	<NavHamburger class="ml-auto md:hidden" />
+	<NavUl class="hidden md:flex gap-4 items-center ml-auto">
+		<NavLi href="/" class="text-gray-900 dark:text-white">
+			Home
+		</NavLi>
+		<NavLi href="/#meteorologi" class="text-gray-900 dark:text-white">
+			Hidro Meteorologi
+		</NavLi>
+		<NavLi href="/#hidrologi" class="text-gray-900 dark:text-white">
+			Hidrologi
+		</NavLi>
+		<NavLi href="/geo" class="text-gray-900 dark:text-white">
+			<Button size="sm" class="px-3 py-1.5"><GlobeOutline class="inline me-1" /> Geospasial</Button>
+		</NavLi>
+	</NavUl>
+</Navbar>
