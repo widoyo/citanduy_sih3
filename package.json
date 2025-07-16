@@ -26,6 +26,7 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@tailwindcss/vite": "^4.0.0",
 		"@types/better-sqlite3": "^7.6.13",
+		"@types/csv-parse": "^1.1.12",
 		"clsx": "^2.1.1",
 		"embla-carousel-svelte": "^8.6.0",
 		"flowbite-svelte": "^1.0.0-next.20",
@@ -42,6 +43,7 @@
 	},
 	"dependencies": {
 		"better-sqlite3": "^12.2.0",
+		"csv-parse": "^6.0.0",
 		"dotenv": "^17.0.0",
 		"leaflet": "^1.9.4",
 		"linkedom": "^0.18.11"

@@ -3,11 +3,15 @@
   import HeaderNav from "$lib/components/HeaderNav.svelte";
   let { children } = $props();
 </script>
-<HeaderNav />
-<div class="container px-12 mt-20 min-h-screen h-full">
+<div class="relative px-8">
+	<HeaderNav />
+</div>
+<div class="px-4 md:px-12 mt-20 ">
   {@render children()}
 </div>
-<div class="flex justify-center items-center p-4 mt-20">
-	<p class="text-sm text-muted-foreground">Made with svelte</p>
-  	<p class="text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
-</div>
+<footer>
+	<div class="flex justify-center items-center p-4 mt-20">
+		<p class="text-sm text-muted-foreground">Made with svelte</p>
+		<p class="text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
+	</div>
+</footer>

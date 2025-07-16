@@ -11,17 +11,23 @@
   <meta name="description" content="Sistem Informasi Hidro Meteorologi, Hidrologi dan Hidro Geologi Resmi BBWS Citanduy" />
 </svelte:head>
 <section id="hero">
-  <div class="flex flex-col md:flex-row gap-4 items-center pb-5 border-b-2 border-b-gray-200">
-    <div class="w-full md:w-1/2">
-      <h1 class="text-6xl text-gray-600 font-bold my-5 tracking-widest">SIH3</h1>
+  <div class="flex flex-col md:flex-row gap-4 items-center pb-5">
+    <div class="w-full md:basis-2/3">
+      <h1 class="text-6xl text-gray-600 font-bold my-5 tracking-widest">SIH3 <img src="/img/logo-pupr.png" alt="" class="inline me-3 pb-2"><span class="text-2xl font-light tracking-tight">BBWS Citanduy</span>
+              <p class="text-xl text-gray-600 mt-5 font-light"></p>
+      </h1>
       <p class="text-4xl text-gray-400 my-4 font-light">Sistem Informasi<br>Hidro&nbsp;Meteorologi, Hidrologi dan Hidro&nbsp;Geologi</p>
-      <p class="text-5xl text-gray-600 mt-5"><img src="/img/logo-pupr.png" alt="" class="inline me-3 pb-2">BBWS Citanduy</p>      
+
     </div>
-    <div class="w-full md:w-1/2 items-center justify-center">
-      <img src="/img/cty-logo.png" alt="BBWS Citanduy Logo" class="mb-9">
-      <span class="mb-2 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
-      <p><a class="me-5" href="{data.berita[0].a_href}">{data.berita[0].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-gray-400">berita lain...</a></p>
+    <div class="w-full md:basis-1/3 order-first">
+      <img src="/img/cty-logo.png" alt="BBWS Citanduy Logo" class="mx-auto">
     </div>
+  </div>
+  <div class="text-center border-t-2 border-b-1 py-2">
+    <p>
+      <span class="me-3 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
+    <a class="me-5" href="https://{data.berita[0].a_href}">{data.berita[0].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-gray-400">berita lain...</a>
+  </p>
   </div>
 </section>
 <section id="meteorologi" class="py-5 mt-9">
