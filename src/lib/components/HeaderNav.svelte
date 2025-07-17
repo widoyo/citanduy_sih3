@@ -7,8 +7,8 @@
 	<NavBrand href="/">
 		<span class="font-extrabold me-3">SIH3</span> BBWS Citanduy
 	</NavBrand>
-	<NavHamburger />
-	<NavUl class="items-right">
+	<div class="justify-end">
+	<NavUl>
 		<NavLi href="/" class="text-gray-900 dark:text-white">
 			Home
 		</NavLi>
@@ -18,8 +18,13 @@
 		<NavLi href="/#hidrologi" class="text-gray-900 dark:text-white">
 			Hidrologi
 		</NavLi>
-		<NavLi href="/geo" class="text-gray-900 dark:text-white">
-			<GlobeOutline class="inline me-1" /> Geospasial
+		<NavLi href="/#mitra" class="text-gray-900 dark:text-white">
+			Mitra
 		</NavLi>
 	</NavUl>
+	</div>
+	<div class="flex">
+		<NavHamburger />
+		<Button size="sm" href="/geo" class="bg-red-500"><GlobeOutline class="inline me-1" /> Geospatial</Button>
+	</div>
 </Navbar>
