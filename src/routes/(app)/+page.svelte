@@ -133,17 +133,18 @@
     </div>
 
     <div class="">
-      <img src="/img/jateng_logo.png" alt="Dinas Lingkungan Hidup Jawa Tengah">
-      <p class="text-xs pt-3">Dinas Lingkungan Hidup dan Kehutanan Jawa Tengah</p>
+      <img src="/img/jateng_logo.png" width="80" alt="Dinas Lingkungan Hidup Jawa Tengah">
+      <p class="text-xs pt-3">Dinas Lingkungan Hidup dan Kehutanan Jawa Tengah  <a href="https://dlhkjatengprov.go.id"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
     <div class="">
       <img src="/img/bpdas_cimata.png" alt="Badan Pengelola DAS Cimanuk Cisanggarung">
-      <p class="text-xs pt-3">Badan Pengelola Daerah Aliran Sungai Hutan Lindung Cimanuk Citanduy</p>
+      <p class="text-xs pt-3">Badan Pengelola Daerah Aliran Sungai Hutan Lindung Cimanuk Citanduy <a href="https://www.instagram.com/bpdas_cimanukcitanduy/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
     <div>
-      <p class="text-xs pt-3">Badan Geologi</p>
+      <img src="/img/geologi_logo.png" width="80" alt="PATGTL Badan Geologi">
+      <p class="text-xs pt-3">Badan Geologi Pusat Air Tanah dan Geologi Tata Lingkungan  <a href="https://geologi.esdm.go.id/patgtl"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
     <div>
@@ -154,7 +155,7 @@
     </div>
 
     <div>
-      <img src="/img/jateng_logo.png" alt="Dinas Energi dan Sumber Daya Mineral Jawa Tengah">
+      <img src="/img/jateng_logo.png" width="80" alt="Dinas Energi dan Sumber Daya Mineral Jawa Tengah">
       <p class="text-xs pt-3">Dinas Energi dan Sumber Daya Mineral Jawa Tengah <a href="https://esdm.jatengprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
   </div>
