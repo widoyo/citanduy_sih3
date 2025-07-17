@@ -13,12 +13,21 @@ Semaksimal mungkin 'entry data' dilakukan dengan cara komunikasi mesin-ke-mesin
 
 ## Product Backlog
 
-- [ ] Pengguna publik dan pengelola dapat mengakses website pada alamat: https://sih3.bbwscitanduy.id
-- [ ] Pengguna publik dapat berinteraksi dengan menu-menu, setiap menu akan membawa pengguna ke halaman yang dipilih
-- [ ] Halaman Hidrometeorologi diisi gambar peta potensi hujan dari BMKG
-- [ ] Halaman Geospatial, menampilkan Peta gambar dari Satelit
-- [ ] Halaman Geospatial, menampilkan titik-titik lokasi Pos Hujan, Pos Duga Air
+- [x] Pengguna publik dan pengelola dapat mengakses website pada alamat: https://sih3.bbwscitanduy.id
+- [x] Pengguna publik dapat berinteraksi dengan menu-menu, setiap menu akan membawa pengguna ke halaman yang dipilih
+- [x] Halaman Hidrometeorologi diisi gambar peta potensi hujan dari BMKG
 - [ ] Halaman Geospatial, menampilkan batas Das/Wilayah Sungai Citanduy, batas wilayah administrasi, 
+- [ ] ~~Halaman Geospatial, menampilkan Peta gambar dari Satelit~~
+- [ ] Halaman Geospatial, menampilkan titik-titik lokasi Pos Hujan, Pos Duga Air
+
+## Sprint 2: 21 Juni - 17 Juli
+
+ - [x] Deployment di Cloudflare Pages, automatic dari github
+ - [x] scrab Prakiraan Cuaca dari BMKG
+ - [x] Scrab Berita dari sda.pu.go.id/balai/bbwscitanduy
+ - [x] menu Geospatial menampilkan peta, meski masih belum terhubung data
+ - [x] Logo, nama dan link Mitra
+ - [x] Tambah Hubungi Kami, berisi alamat BBWS Citanduy
 
 ## Sprint 1: 9 - 20 Juni 2025
 
@@ -29,7 +38,7 @@ Semaksimal mungkin 'entry data' dilakukan dengan cara komunikasi mesin-ke-mesin
 - [x] Pesan sub domain 'sih3.bbwscitanduy.id'
 - [x] Install dan konfigurasi Nginx (Engine X) Web Server, menggunakan VPS Cloud hosting bersama dengan SIHKA BBWS Citanduy
 - [x] Membuat prototype halaman dari Mockup, dibuat dengan sveltekit
-- [ ] Deploy prototype ke production server
+- [x] Deploy prototype ke production server
 
 ## sv (Svelte Command Line Interface / CLI)
 

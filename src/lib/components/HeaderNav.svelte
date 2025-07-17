@@ -21,7 +21,7 @@
 		<NavLi href="/#hidrologi" class="text-gray-900 dark:text-white">
 			Hidrologi
 		</NavLi>
-		<NavLi href="/#hidrologi" class="text-gray-900 dark:text-white">
+		<NavLi href="/#hidrogeologi" class="text-gray-900 dark:text-white">
 			Hidro Geologi
 		</NavLi>
 		<NavLi>About<ChevronDownOutline class="text-primary-800 ms-2 inline h-6 w-6 dark:text-white" />

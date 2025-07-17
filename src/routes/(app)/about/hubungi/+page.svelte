@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Button } from 'flowbite-svelte';
   import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
 </script>
 <section id="hero">
@@ -14,7 +15,7 @@
         Jl. Prof. Ir. Sutami no 1, Karangpanimbal, Purwaharja<br>
         Kota Banjar, provinsi Jawa Barat - 46332
         </p>
-        <p>Peta : <a href="https://maps.app.goo.gl/s65rUoBgeUuYPtc19">Google <ArrowUpRightFromSquareOutline class="inline" /></a></p>
+        <Button href="https://maps.app.goo.gl/s65rUoBgeUuYPtc19">Peta Google <ArrowUpRightFromSquareOutline class="inline ms-3" /></Button>
 
     </div>
   </div>
