@@ -25,10 +25,10 @@
 </script>
 
 <style>
-  :global(html), :global(body), :global(#svelte), :global(main), #map {
+  :global(html), :global(body), #map {
     height: 100%;
     margin: 0;
-    margin-top: 35px;
+    margin-top: 40px;
     padding: 0;
   }
 

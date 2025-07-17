@@ -10,8 +10,8 @@
   {@render children()}
 </div>
 <footer>
-	<div class="flex justify-center items-center p-4 mt-20">
-		<p class="text-sm text-muted-foreground">Made with svelte</p>
-		<p class="text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
+	<div class="flex p-4 mt-20">
+		<p class="flex-1"><img src="/img/logo-pupr.png" alt="PUPR" class=""></p>
+		<p class="flex-1 text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
 	</div>
 </footer>
