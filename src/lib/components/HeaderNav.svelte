@@ -3,7 +3,7 @@
     import { GlobeOutline, ChevronDownOutline } from "flowbite-svelte-icons";
 </script>
 
-<Navbar class="fixed start-0 top-0 z-20 w-full px-2 py-2.5 sm:px-4 backdrop-blur-sm">
+<Navbar class="fixed start-0 top-0 z-20 w-full px-2 py-0 sm:px-4 backdrop-blur-sm">
 	<NavBrand href="/">
 		<span class="font-extrabold me-3">SIH3</span> WS Citanduy
 	</NavBrand>
@@ -28,7 +28,7 @@
     </NavLi>
     <Dropdown simple class="w-44">
       <DropdownItem href="/#mitra">Mitra</DropdownItem>
-      <DropdownItem href="/">Hubungi Kami</DropdownItem>
+      <DropdownItem href="/about/hubungi">Hubungi Kami</DropdownItem>
       <DropdownDivider />
       <DropdownItem href="/">Kritik Saran</DropdownItem>
     </Dropdown>

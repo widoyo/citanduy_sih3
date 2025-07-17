@@ -12,6 +12,6 @@
 <footer>
 	<div class="flex p-4 mt-20">
 		<p class="flex-1"><img src="/img/logo-pupr.png" alt="PUPR" class=""></p>
-		<p class="flex-1 text-sm text-muted-foreground">© 2025 BBWS Citanduy</p>
+		<p class="flex-1 text-sm text-muted-foreground">© 2025 SIH3 Wilayah Sungai Citanduy</p>
 	</div>
 </footer>
