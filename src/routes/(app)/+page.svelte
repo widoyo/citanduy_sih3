@@ -15,10 +15,10 @@
 <section id="hero">
   <div class="flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full md:basis-1/3">
-      <img src="/img/logo_h3.png" height="20" alt="Hidro Meteorologi, Hidrologi, Hidro Geologi">
+      <img src="/img/logo_h3.png" class="mx-auto" alt="Hidro Meteorologi, Hidrologi, Hidro Geologi">
     </div>
     <div class="w-full md:basis-2/3">
-      <h1 class="text-6xl text-gray-600 font-bold my-5 md:tracking-widest">SIH3 <span class="text-2xl font-light md:tracking-wide">Wilayah Sungai Citanduy</span>
+      <h1 class="text-6xl/7 text-gray-600 font-bold my-5 md:tracking-widest">SIH3 <span class="text-2xl font-light md:tracking-wide">Wilayah&nbsp;Sungai&nbsp;Citanduy</span>
               <p class="text-xl text-gray-600 mt-5 font-light"></p>
       </h1>
       <p class="text-4xl text-gray-400 my-4 font-light">Sistem Informasi<br>Hidro&nbsp;Meteorologi, Hidrologi dan Hidro&nbsp;Geologi</p>
