@@ -26,7 +26,7 @@
   <div class="text-center border-t-2 border-b-1 py-2">
     <p>
       <span class="me-3 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
-    <a class="me-5" href="https://{data.berita[0].a_href}">{data.berita[0].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-gray-400">berita lain...</a>
+    <a class="me-5" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[0].a_href}">{data.berita[0].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-gray-400">berita lain...</a>
   </p>
   </div>
 </section>
