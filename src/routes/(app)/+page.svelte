@@ -147,7 +147,7 @@
 
     <div class="">
       <img src="/img/jateng_logo.png" width="80" alt="Dinas Lingkungan Hidup Jawa Tengah">
-      <p class="text-xs pt-3">Dinas Lingkungan Hidup dan Kehutanan Jawa Tengah  <a href="https://dlhkjatengprov.go.id"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
+      <p class="text-xs pt-3">Dinas Lingkungan Hidup dan Kehutanan Jawa Tengah  <a href="https://dlhk.jatengprov.go.id"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
     <div class="">
