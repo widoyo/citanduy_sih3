@@ -134,7 +134,7 @@
     </div>
 
     <div>
-      <img src="/img/jateng_logo.png" width="80" alt="Dinas Sumber Daya Air Provinsi Jawa Tengah">
+      <img src="/img/pusdataru_logo.jpeg" width="80" alt="Dinas Sumber Daya Air Provinsi Jawa Tengah">
       <p class="text-xs pt-3">Dinas Sumber Daya Air Provinsi Jawa Tengah <a href="https://pusdataru.jatengprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
