@@ -37,5 +37,11 @@
     border: none;
   }
 </style>
+
+ <svelte:head>
+  <title>Geospatial H3 Wilayah Sungai Citanduy</title>
+  <meta name="description" content="Content geografis Resmi H3 Wilayah Sungai Citanduy" />
+</svelte:head>
+
 <HeaderNav />
 <div id="map"></div>

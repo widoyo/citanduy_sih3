@@ -2,6 +2,11 @@
   import { Button } from 'flowbite-svelte';
   import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
 </script>
+<svelte:head>
+  <title>Sekretariat SIH3 Wilayah Sungai Citanduy</title>
+  <meta name="description" content="Sekretariat Resmi Tim SIH3 Wilayah Sungai Citanduy" />
+</svelte:head>
+
 <section id="hero">
   <div class="flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full md:basis-1/3">
