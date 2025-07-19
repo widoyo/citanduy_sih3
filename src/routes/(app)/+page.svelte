@@ -8,8 +8,8 @@
 </script>
 
 <svelte:head>
-  <title>SIH3 BBWS Citanduy</title>
-  <meta name="description" content="Sistem Informasi Hidro Meteorologi, Hidrologi dan Hidro Geologi Resmi BBWS Citanduy" />
+  <title>SIH3 WS Citanduy</title>
+  <meta name="description" content="Sistem Informasi Hidro Meteorologi, Hidrologi dan Hidro Geologi Resmi Wilayah Sungai Citanduy" />
 </svelte:head>
 
 <section id="hero">
@@ -132,6 +132,12 @@
       <img src="https://d2s1u1uyrl4yfi.cloudfront.net/dinassda/post/0e93917bd4ef28a9ea5da93da3b32925.png" alt="Dinas Sumber Daya Air Provinsi Jawa Barat">
       <p class="text-xs pt-3">Dinas Sumber Daya Air Provinsi Jawa Barat <a href="https://dsda.jabarprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
+
+    <div>
+      <img src="/img/jateng_logo.png" width="80" alt="Dinas Sumber Daya Air Provinsi Jawa Tengah">
+      <p class="text-xs pt-3">Dinas Sumber Daya Air Provinsi Jawa Tengah <a href="https://pusdataru.jatengprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
+    </div>
+
     <div class="">
       <div class="bg-green-600 p-3 rounded-sm">
       <img src="https://d2s1u1uyrl4yfi.cloudfront.net/dlh/logo/db4f7efb8a70794e1f8b54cac83dbdda.png" alt="Dinas Lingkungan Hidup Provinsi Jawa Barat">
