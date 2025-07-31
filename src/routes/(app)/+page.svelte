@@ -12,17 +12,14 @@
   <meta name="description" content="Sistem Informasi Hidro Meteorologi, Hidrologi dan Hidro Geologi Resmi Wilayah Sungai Citanduy" />
 </svelte:head>
 
-<section id="hero">
-  <div class="flex flex-col md:flex-row gap-4 items-center pb-5">
-    <div class="w-full md:basis-1/3">
-      <img src="/img/logo_h3.png" class="mx-auto" alt="Hidro Meteorologi, Hidrologi, Hidro Geologi">
-    </div>
-    <div class="w-full md:basis-2/3">
-      <h1 class="text-6xl/7 text-gray-600 font-bold my-5 md:tracking-widest">SIH3 <span class="text-2xl font-light md:tracking-wide">Wilayah&nbsp;Sungai&nbsp;Citanduy</span>
-              <p class="text-xl text-gray-600 mt-5 font-light"></p>
-      </h1>
-      <p class="text-4xl text-gray-400 my-4 font-light">Sistem Informasi<br>Hidro&nbsp;Meteorologi, Hidrologi dan Hidro&nbsp;Geologi</p>
-      <Button href="#meteorologi" color="red" class="md:tracking-widest">Mulai <ArrowDownOutline /></Button>
+<section
+  id="hero"
+  class="border border-gray-200 relative overflow-hidden"
+  style="background-image: url('/img/manganti.webp'); background-size: cover; background-position: center; padding-top: 33.33%;"
+>
+  <div class="absolute inset-0 flex flex-col md:flex-row gap-4 items-center pb-5">
+    <div class="w-full text-center">
+      <p class="text-4xl text-shadow-gray text-white my-4 font-light">Sistem Informasi<br><br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
   </div>
   </div>
   <div class="flex items-center justify-center">
@@ -31,9 +28,9 @@
   </div>
 </div>
   <div class="text-center border-t-2 border-t-gray-400 border-b-1 border-b-gray-400 py-2">
-    <p>
+    <p class=" backdrop-blur-sm">
       <span class="me-3 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
-    <a class="me-5" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[news_index].a_href}">{data.berita[news_index].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-gray-400">berita lain...</a>
+    <a class="me-5 text-white" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[news_index].a_href}">{data.berita[news_index].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-white">berita lain...</a>
   </p>
   </div>
 </section>

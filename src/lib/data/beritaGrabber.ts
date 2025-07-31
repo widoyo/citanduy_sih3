@@ -33,7 +33,6 @@ export async function getArticles(html: string): Promise<string> {
     if (articles.length > 0) {
         console.log('Found articles:', articles.length);
         return Array.from(articles).map((article) => {
-            console.log('Article:', article.querySelector<HTMLHeadingElement>('h4').textContent);
             const a_href = article.href;
             const a_title = article.querySelector<HTMLHeadingElement>('h4').textContent.trim();
             return {

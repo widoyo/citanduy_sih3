@@ -15,14 +15,14 @@
 		<NavLi href="/" class="text-gray-900 dark:text-white">
 			Home
 		</NavLi>
-		<NavLi href="/#meteorologi" class="text-gray-900 dark:text-white">
-			Hidro Meteorologi
-		</NavLi>
 		<NavLi href="/#hidrologi" class="text-gray-900 dark:text-white">
 			Hidrologi
 		</NavLi>
+		<NavLi href="/#meteorologi" class="text-gray-900 dark:text-white">
+			Hidrometeorologi
+		</NavLi>
 		<NavLi href="/#hidrogeologi" class="text-gray-900 dark:text-white">
-			Hidro Geologi
+			Hidrogeologi
 		</NavLi>
 		<NavLi>About<ChevronDownOutline class="text-primary-800 ms-2 inline h-6 w-6 dark:text-white" />
     </NavLi>
@@ -30,8 +30,11 @@
       <DropdownItem href="/#mitra">Mitra</DropdownItem>
       <DropdownItem href="/about/hubungi">Hubungi Kami</DropdownItem>
       <DropdownDivider />
-      <DropdownItem href="/">Kritik Saran</DropdownItem>
+      <DropdownItem href="/about/krisan">Kritik Saran</DropdownItem>
     </Dropdown>
 	</NavUl>
-	<Button size="sm" href="/geo" class="bg-red-500 hidden md:block"><GlobeOutline class="inline me-1" /> Geospatial</Button>
+	<div class="hidden md:flex items-center gap-2 ms-auto">
+		<Button size="sm" href="/ews" class="bg-red-500 hidden md:block"><GlobeOutline class="inline me-1" /> EWS</Button>
+		<Button size="sm" href="/geo" outline={true} class="md:block"><GlobeOutline class="inline me-1" /> Geospatial</Button>
+	</div>
 </Navbar>

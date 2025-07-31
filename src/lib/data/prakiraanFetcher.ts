@@ -2,11 +2,12 @@ import { parseHTML } from 'linkedom';
 
 /**
  * Fetches the weather forecast data from BMKG and parses the days from the header table.
+ * @param {string} url - The URL to fetch the forecast data from.
  * @returns {Promise<any>} A promise that resolves to the parsed days from the forecast.
  */
-export async function fetchPrakiraan(): Promise<any> {
+export async function fetchPrakiraan(url: string): Promise<any> {
   try {
-    const response = await fetch('https://www.bmkg.go.id/cuaca/prakiraan-cuaca/32');
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
