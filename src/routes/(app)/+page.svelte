@@ -106,24 +106,19 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
     {#each data.groupedWLevelData as group}
     <div class="border border-gray-200 rounded-sm p-2 mb-2">
-    <h2 class="text-lg font-bold">{group.sungai} <small class="text-gray-500 font-light">{group.items.length} Pos Duga Air</small></h2>
+    <h2 class="text-lg/5 font-bold mb-3"><small class="text-gray-500 font-light">sungai</small><br>
+      {group.sungai} <small class="text-gray-500 font-light">{group.items.length} Pos Duga Air</small></h2>
     <ol class="list-decimal ms-4">
       {#each group.items as item}
         <li>
           {item.pos.nama} <small class="font-light text-gray-500">+{item.pos.elevasi} mdpl</small><br>
-          <small class="font-light text-gray-500">TMA:</small> {item.telemetri.wlevel?.toFixed(1)} cm
+          <small class="font-light text-gray-500">TMA:</small> {item.telemetri.wlevel?.toFixed(1)} cm,<br>
+          <small class="font-light text-gray-500">Cenderung:</small> {item.telemetri.trend.t_60_min.trend}<br>
         </li>
       {/each}
     </ol>
     </div>
-    {/each}
-  {#each data.wlevelData as item}
-    <div class="border border-gray-200 rounded-sm p-2 mb-2">
-      <h3 class="text-md text-gray-800">{item.pos.nama}</h3>
-      <p class="text-xs text-gray-500">Tinggi Muka Air: {item.telemetri.wlevel?.toFixed(1)} cm</p>
-      <p class="text-xs text-gray-500">Status: {item.status}</p>
-    </div>
-  {/each}
+    {/each} 
   </div>
 </div>
 </section>
