@@ -83,6 +83,5 @@ export async function parsePrakiraan(html: string) {
             return data.city.toLowerCase().includes(kota);
         });
     });
-    console.log('Filtered forecast data:', filteredForecast);
     return filteredForecast;
 }

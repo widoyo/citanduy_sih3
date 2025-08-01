@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageProps } from './$types';
-  import { ArrowUpRightFromSquareOutline, ArrowDownOutline } from 'flowbite-svelte-icons';
+  import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
   import TruncatedText  from '$lib/components/TruncatedText.svelte';
   import { Button } from 'flowbite-svelte';
   let { data }: PageProps = $props();
@@ -19,7 +19,7 @@
 >
   <div class="absolute inset-0 flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full text-center">
-      <p class="text-4xl text-shadow-gray text-white my-4 font-light">Sistem Informasi<br><br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
+      <p class="text-4xl text-shadow-lg/30 text-white my-4 font-light">Sistem Informasi<br><br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
   </div>
   </div>
   <div class="flex items-center justify-center">
@@ -78,11 +78,53 @@
     <h2 class="text-3xl font-bold md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
-  Hujan yang terjadi di wilayah Jawa Barat dan sebagian Jawa Tengah
+  <h3 class="text-2xl mt-10 mb-5">Hujan</h3>
+  {#if data.rainData.length > 0}
+    <p class="text-sm text-gray-500">Hujan terjadi hari ini di <b>{data.rainData.length}</b> lokasi dari <b>51</b> Pos Hujan</p>
+  {:else}
+    <p class="text-sm text-gray-500">Tidak ada data hujan hari ini.</p>
+  {/if}
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
+  {#if data.rainData.length > 0}
+  {#each data.groupedRainData as group}
+  <div>
+    <h2 class="text-xl font-bold">{group.label}</h2>
+    <ul>
+      {#each group.items as item}
+        <li>{item.pos.nama}: {item.telemetri.rain24.toFixed(1)} mm</li>
+      {/each}
+    </ul>
+  </div>
+  {/each}
+  {:else}
+    <p class="text-center text-gray-500">Tidak ada data hujan hari ini.</p>
+  {/if}
 </div>
 <div>
-  Tinggi Muka Air
-  Cendrung Naik | Datar | Cendrung Turun
+
+  <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
+    {#each data.groupedWLevelData as group}
+    <div class="border border-gray-200 rounded-sm p-2 mb-2">
+    <h2 class="text-lg font-bold">{group.sungai} <small class="text-gray-500 font-light">{group.items.length} Pos Duga Air</small></h2>
+    <ol class="list-decimal ms-4">
+      {#each group.items as item}
+        <li>
+          {item.pos.nama} <small class="font-light text-gray-500">+{item.pos.elevasi} mdpl</small><br>
+          <small class="font-light text-gray-500">TMA:</small> {item.telemetri.wlevel?.toFixed(1)} cm
+        </li>
+      {/each}
+    </ol>
+    </div>
+    {/each}
+  {#each data.wlevelData as item}
+    <div class="border border-gray-200 rounded-sm p-2 mb-2">
+      <h3 class="text-md text-gray-800">{item.pos.nama}</h3>
+      <p class="text-xs text-gray-500">Tinggi Muka Air: {item.telemetri.wlevel?.toFixed(1)} cm</p>
+      <p class="text-xs text-gray-500">Status: {item.status}</p>
+    </div>
+  {/each}
+  </div>
 </div>
 </section>
 

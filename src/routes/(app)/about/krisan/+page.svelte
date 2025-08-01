@@ -8,8 +8,9 @@
   let isLoading = false; // Untuk menunjukkan status loading
 
   // Ganti dengan URL Aplikasi Web Google Apps Script Anda yang sudah disalin
-  //const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGgaw2HOXs4ZTXEsXnA5wpFYDFWnOPcarLrDgAFze7yAn3z8Br0dyYfMswjtoCJMNgcQ/exec';
-  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuqZUToSIbwlJ7XmaJ2MiK9D22vFfikla2oCWuOjt2/dev';
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGgaw2HOXs4ZTXEsXnA5wpFYDFWnOPcarLrDgAFze7yAn3z8Br0dyYfMswjtoCJMNgcQ/exec';
+  
+  //const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuqZUToSIbwlJ7XmaJ2MiK9D22vFfikla2oCWuOjt2/dev';
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
