@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageProps } from './$types';
-  import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
+  import { ArrowUpRightFromSquareOutline, ArrowDownOutline, ArrowUpOutline } from 'flowbite-svelte-icons';
   import TruncatedText  from '$lib/components/TruncatedText.svelte';
   import { Button } from 'flowbite-svelte';
   let { data }: PageProps = $props();
@@ -19,7 +19,7 @@
 >
   <div class="absolute inset-0 flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full text-center">
-      <p class="text-4xl text-shadow-lg/30 text-white my-4 font-light">Sistem Informasi<br><br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
+      <p class="text-4xl text-shadow-lg/30 text-white my-4 font-light">Sistem Informasi<br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
   </div>
   </div>
   <div class="flex items-center justify-center">
@@ -78,11 +78,14 @@
     <h2 class="text-3xl font-bold md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
-  <h3 class="text-2xl mt-10 mb-5">Hujan</h3>
+  <h3 class="text-2xl mt-10 mb-5"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cloud-rain" viewBox="0 0 16 16">
+  <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 0 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973M8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4 4 0 0 1 8.5 2"/>
+</svg>
+Hujan</h3>
   {#if data.rainData.length > 0}
     <p class="text-sm text-gray-500">Hujan terjadi hari ini di <b>{data.rainData.length}</b> lokasi dari <b>51</b> Pos Hujan</p>
   {:else}
-    <p class="text-sm text-gray-500">Tidak ada data hujan hari ini.</p>
+    <p class="text-sm text-gray-500">Tidak ada hujan hari ini.</p>
   {/if}
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
   {#if data.rainData.length > 0}
@@ -96,13 +99,12 @@
     </ul>
   </div>
   {/each}
-  {:else}
-    <p class="text-center text-gray-500">Tidak ada data hujan hari ini.</p>
   {/if}
 </div>
 <div>
 
   <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
+  <p class="text-sm mb-3 text-gray-500">T15: tren 15 menit lalu, T60: tren 60 menit lalu</p>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
     {#each data.groupedWLevelData as group}
     <div class="border border-gray-200 rounded-sm p-2 mb-2">
@@ -112,8 +114,15 @@
       {#each group.items as item}
         <li>
           {item.pos.nama} <small class="font-light text-gray-500">+{item.pos.elevasi} mdpl</small><br>
-          <small class="font-light text-gray-500">TMA:</small> {item.telemetri.wlevel?.toFixed(1)} cm,<br>
-          <small class="font-light text-gray-500">Cenderung:</small> {item.telemetri.trend.t_60_min.trend}<br>
+          <small class="font-light text-gray-500">TMA:</small> {((item.telemetri.wlevel?) / 100).toFixed(1)} m, 
+          <small class="font-light text-gray-500">T60</small> 
+          {#if item.telemetri.trend.t_60_min.trend === 'naik'}<ArrowUpOutline class="inline w-4 h-4 text-red-500"/>
+          {:else if item.telemetri.trend.t_60_min.trend === 'turun'}<ArrowDownOutline class="inline w-4 h-4 text-green-500" />
+          {:else}-{/if}
+          <small class="font-light text-gray-500">T15</small> 
+          {#if item.telemetri.trend.t_15_min.trend === 'naik'}<ArrowUpOutline class="inline w-4 h-4 text-red-500"/>
+          {:else if item.telemetri.trend.t_15_min.trend === 'turun'}<ArrowDownOutline class="inline w-4 h-4 text-green-500" />
+          {:else}-{/if}
         </li>
       {/each}
     </ol>

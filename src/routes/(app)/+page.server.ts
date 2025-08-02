@@ -83,11 +83,14 @@ export const load: PageLoad = async () => {
 
     const wlevelData = await getWlevel();
     // Define your preferred order of sungai (case-insensitive match)
-    const sungaiOrder = ['citanduy', 'cijolang'];
+    const sungaiOrder = ['cikidang', 'cikondang', 'cibaruyan', 'citanduy', 'cimuntur', 'cijolang'];
 
     // Step 1: Group wlevelData by sungai
     const sungaiGroups: Record<string, typeof wlevelData.items> = {};
 
+    wlevelData.items = wlevelData.items.filter(
+        item => !item.pos.nama.toLowerCase().includes('manganti')
+    );
     for (const item of wlevelData.items) {
         const sungai = item.pos.sungai || 'Lainnya';
         if (!sungaiGroups[sungai]) sungaiGroups[sungai] = [];
