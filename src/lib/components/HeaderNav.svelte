@@ -8,7 +8,7 @@
 		<span class="font-extrabold me-3">SIH3</span> WS Citanduy
 	</NavBrand>
 	<div class="flex gap-2 md:hidden">
-		<Button size="sm" href="/ews" class="bg-red-500"><BellRingOutline class="inline me-1" /> EWS</Button>
+		<Button size="sm" href="https://sihka.bbwscitanduy.id/ews" class="bg-red-500"><BellRingOutline class="inline me-1" /> EWS</Button>
 		<Button size="sm" href="/geo" outline={true}><GlobeOutline class="inline me-1" /> Geospatial</Button>
 		<NavHamburger />
 	</div>
@@ -35,7 +35,7 @@
     </Dropdown>
 	</NavUl>
 	<div class="hidden md:flex items-center gap-2 ms-auto">
-		<Button size="sm" href="/ews" class="bg-red-500 hidden md:block"><BellRingOutline class="inline me-1" /> EWS</Button>
+		<Button size="sm" href="https://sihka.bbwscitanduy.id/ews" class="bg-red-500 hidden md:block"><BellRingOutline class="inline me-1" /> EWS</Button>
 		<Button size="sm" href="/geo" outline={true} class="md:block"><GlobeOutline class="inline me-1" /> Geospatial</Button>
 	</div>
 </Navbar>

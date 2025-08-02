@@ -5,8 +5,40 @@
   import { Button } from 'flowbite-svelte';
   let { data }: PageProps = $props();
   let news_index = Math.floor(Math.random() * 5);
+
+  // peta cadangan air tanah
+    import { onMount } from 'svelte';
+    import('leaflet/dist/leaflet.css');
+
+  let mapContainer;
+
+  onMount(async () => {
+    // Prevent code from running on the server
+    if (typeof window === 'undefined') return;
+
+    // Import Leaflet dynamically only in the browser
+    const L = await import('leaflet');
+
+    const map = L.map(mapContainer).setView([-7.35, 108.22], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    L.marker([-7.35, 108.22])
+      .addTo(map)
+      .bindPopup('Contoh Sumur Pantau')
+      .openPopup();
+  });
 </script>
 
+<style>
+  #hidrogeologi .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+</style>
 <svelte:head>
   <title>SIH3 WS Citanduy</title>
   <meta name="description" content="Sistem Informasi Hidro Meteorologi, Hidrologi dan Hidro Geologi Resmi Wilayah Sungai Citanduy" />
@@ -137,11 +169,8 @@ Hujan</h3>
   <div class="text-center">
     <h2 class="text-3xl font-bold my-5 md:tracking-widest">Air Tanah</h2>
   </div>
-  Cadangan Air Tanah
 </div>
-<div>
-  Sumur Pantau
-</div>
+  <div bind:this={mapContainer} class="w-full h-[400px] max-w-screen-lg mx-auto rounded shadow"></div>
 </section>
 
 <section id="berita" class="mt-10 border-t border-t-gray-200">
