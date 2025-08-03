@@ -23,7 +23,7 @@ export const load: PageLoad = async () => {
     const rainData = await fetchRain();
 
 	// Initial desired order — lowercase substrings
-	const initialOrder = ['tasikmalaya', 'ciamis', 'kadipaten', 'pangandaran', 'banjar', 'banyumas', 'cilacap'];
+	const initialOrder = ['tasikmalaya', 'ciamis', 'kuningan', 'pangandaran', 'banjar', 'banyumas', 'cilacap'];
 
 	// Track which kabupaten keyword matched which items
 	const orderedGrouped: { key: string; label: string; items: typeof rainData }[] = [];
