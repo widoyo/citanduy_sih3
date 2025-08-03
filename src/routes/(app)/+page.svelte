@@ -34,10 +34,32 @@
 </script>
 
 <style>
-  #hidrogeologi .leaflet-container {
+  .leaflet-container {
   width: 100%;
   height: 100%;
-}
+  }
+  .masonry-grid {
+    column-count: 1; /* Default untuk mobile */
+    column-gap: 1rem; /* Sama dengan gap-4 di Tailwind */
+  }
+
+  @media (min-width: 768px) { /* md breakpoint */
+    .masonry-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1024px) { /* lg breakpoint */
+    .masonry-grid {
+      column-count: 3;
+    }
+  }
+
+  .masonry-grid > div {
+    break-inside: avoid-column; /* Penting untuk mencegah kartu terpotong */
+    margin-bottom: 1rem;
+  }
+
 </style>
 <svelte:head>
   <title>SIH3 WS Citanduy</title>
@@ -110,23 +132,23 @@
     <h2 class="text-3xl font-bold md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
-  <h3 class="text-2xl mt-10 mb-5"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cloud-rain" viewBox="0 0 16 16">
-  <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 0 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973M8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4 4 0 0 1 8.5 2"/>
-</svg>
-Hujan</h3>
+  <h3 class="text-2xl mt-10 mb-5">Hujan</h3>
   {#if data.rainData.length > 0}
     <p class="text-sm text-gray-500">Hujan terjadi hari ini di <b>{data.rainData.length}</b> lokasi dari <b>51</b> Pos Hujan</p>
   {:else}
     <p class="text-sm text-gray-500">Tidak ada hujan hari ini.</p>
   {/if}
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
+  <div class="masonry-grid">
   {#if data.rainData.length > 0}
   {#each data.groupedRainData as group}
-  <div>
-    <h2 class="text-xl font-bold">{group.label} <span class="font-light">{group.items.reduce( (acc, item) => acc + item.telemetri.rain24, 0).toFixed(1)} mm</span></h2>
-    <ul>
+  <div class="mb-5" style="margin-bottom: 3rem;">
+    <h2 class="text-xl font-bold border-b-2 pb-1">{group.label} 
+      <span class="ms-2 font-light text-xs text-gray-500">HUJAN</span> <span class="font-light">{group.items.reduce( (acc, item) => acc + item.telemetri.rain24, 0).toFixed(1)}</span> <span class="font-light text-xs text-gray-500">mm</span></h2>
+    <ul class="mt-3">
       {#each group.items as item}
-        <li>{item.pos.nama}: {item.telemetri.rain24.toFixed(1)} mm</li>
+        <li class="grid grid-cols-2 gap-2">
+          <span>{item.pos.nama.replace('PCH ', '')}</span> 
+          <span class="text-right">{item.telemetri.rain24.toFixed(1)} <span class="font-light text-xs text-gray-500">mm</span></span></li>
       {/each}
     </ul>
   </div>
@@ -137,15 +159,15 @@ Hujan</h3>
 
   <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
   <p class="text-sm mb-3 text-gray-500">T15: thd 15 menit lalu, T60: thd 60 menit lalu</p>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
+  <div class="masonry-grid">
     {#each data.groupedWLevelData as group}
-    <div class="border border-gray-200 rounded-sm p-2 mb-2">
+    <div class="border border-gray-200 rounded-sm p-2 shadow-xs">
     <h2 class="text-lg/5 font-bold mb-3"><small class="text-gray-500 font-light">sungai</small><br>
       {group.sungai}</h2>
     <ol class="list-decimal ms-4">
       {#each group.items as item}
         <li class="mb-6">
-          {item.pos.nama} <small class="font-light text-gray-500">+{item.pos.elevasi} mdpl</small><br>
+          {item.pos.nama} <small class="font-light text-gray-500"><b class="font-bold">+{item.pos.elevasi}</b> mdpl</small><br>
           {#if item.pos.sh }
           <small class="font-light text-gray-500">SIAGA</small> <span class="text-xs text-white bg-green-700 rounded-xs px-1">{(item.pos.sh/100).toFixed(1)}</span> <span class="text-xs text-gray bg-yellow-500 rounded-xs px-1">{(item.pos.sk / 100).toFixed(1)}</span> <span class="text-xs text-white bg-red-700 rounded-xs px-1">{(item.pos.sm / 100).toFixed(1)}</span><br>
           {/if}
