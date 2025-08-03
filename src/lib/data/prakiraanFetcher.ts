@@ -76,7 +76,7 @@ export async function parsePrakiraan(html: string) {
         }
     }
     //console.log('Parsed forecast data:', forecastData);
-    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'pangandaran', 'cilacap', 'banyumas', 'kadipaten'];
+    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'pangandaran', 'cilacap', 'banyumas', 'kuningan'];
     // Filter the forecast data to include only the word of cities we are interested in
     const filteredForecast = forecastData.filter((data) => {
         return kotas.some((kota) => {
