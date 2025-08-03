@@ -31,6 +31,10 @@ export const load: PageLoad = async () => {
 	const usedIndices = new Set<number>();
 	const usedKeywords = new Set<string>();
 
+    // filter rainData to remove item.telemetri.ch < 1
+    rainData.items = rainData.items.filter(
+        item => item.telemetri.rain24 > 0.5
+    ) 
 	// Step 1: Apply initial kabupaten order
 	for (const keyword of initialOrder) {
 		const items: typeof rainData = [];

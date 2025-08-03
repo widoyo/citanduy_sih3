@@ -123,7 +123,7 @@ Hujan</h3>
   {#if data.rainData.length > 0}
   {#each data.groupedRainData as group}
   <div>
-    <h2 class="text-xl font-bold">{group.label}</h2>
+    <h2 class="text-xl font-bold">{group.label} <span class="font-light">{group.items.reduce( (acc, item) => acc + item.telemetri.rain24, 0).toFixed(1)} mm</span></h2>
     <ul>
       {#each group.items as item}
         <li>{item.pos.nama}: {item.telemetri.rain24.toFixed(1)} mm</li>
@@ -136,17 +136,20 @@ Hujan</h3>
 <div>
 
   <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
-  <p class="text-sm mb-3 text-gray-500">T15: tren 15 menit lalu, T60: tren 60 menit lalu</p>
+  <p class="text-sm mb-3 text-gray-500">T15: thd 15 menit lalu, T60: thd 60 menit lalu</p>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
     {#each data.groupedWLevelData as group}
     <div class="border border-gray-200 rounded-sm p-2 mb-2">
     <h2 class="text-lg/5 font-bold mb-3"><small class="text-gray-500 font-light">sungai</small><br>
-      {group.sungai} <small class="text-gray-500 font-light">{group.items.length} Pos Duga Air</small></h2>
+      {group.sungai}</h2>
     <ol class="list-decimal ms-4">
       {#each group.items as item}
-        <li>
+        <li class="mb-6">
           {item.pos.nama} <small class="font-light text-gray-500">+{item.pos.elevasi} mdpl</small><br>
-          <small class="font-light text-gray-500">TMA:</small> {((item.telemetri.wlevel?) / 100).toFixed(1)} m, 
+          {#if item.pos.sh }
+          <small class="font-light text-gray-500">SIAGA</small> <span class="text-xs text-white bg-green-700 rounded-xs px-1">{(item.pos.sh/100).toFixed(1)}</span> <span class="text-xs text-gray bg-yellow-500 rounded-xs px-1">{(item.pos.sk / 100).toFixed(1)}</span> <span class="text-xs text-white bg-red-700 rounded-xs px-1">{(item.pos.sm / 100).toFixed(1)}</span><br>
+          {/if}
+          <small class="font-light text-gray-500" title="{item.telemetri.sampling}">TMA</small> {((item.telemetri.wlevel?) / 100).toFixed(1)} m, 
           <small class="font-light text-gray-500">T60</small> 
           {#if item.telemetri.trend.t_60_min.trend === 'naik'}<ArrowUpOutline class="inline w-4 h-4 text-red-500"/>
           {:else if item.telemetri.trend.t_60_min.trend === 'turun'}<ArrowDownOutline class="inline w-4 h-4 text-green-500" />
