@@ -76,11 +76,11 @@ export async function parsePrakiraan(html: string) {
         }
     }
     //console.log('Parsed forecast data:', forecastData);
-    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'pangandaran', 'cilacap', 'banyumas', 'kuningan'];
+    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'kuningan', 'pangandaran', 'cilacap', 'banyumas'];
     // Filter the forecast data to include only the word of cities we are interested in
     const filteredForecast = forecastData.filter((data) => {
         return kotas.some((kota) => {
-            return data.city.toLowerCase().includes(kota);
+            return data.city.toLowerCase().includes(kota) && (data.city.toLowerCase() !== 'banjarnegara');
         });
     });
     return filteredForecast;
