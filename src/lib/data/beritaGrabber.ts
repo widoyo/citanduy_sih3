@@ -1,11 +1,13 @@
 import { parseHTML } from 'linkedom';
+import { URL_KEGIATAN_BBWSCTY } from '$env/static/private';
 
 /**
  * fetches the news data from a given URL and returns the HTML content.
  */
 export async function fetchBeritaCty(): Promise<string> {
   try {
-    const response = await fetch('https://sda.pu.go.id/balai/bbwscitanduy/berita');
+    
+    const response = await fetch(URL_KEGIATAN_BBWSCTY);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -15,15 +17,6 @@ export async function fetchBeritaCty(): Promise<string> {
     console.error('Error fetching data:', error);
     throw error; // Re-throw the error for further handling
   }
-}
-
-export async function getTitle(html: string): Promise<string> {
-  const { document } = parseHTML(html);
-  const titleElement = document.querySelector<HTMLTitleElement>('title');
-  if (titleElement) {
-    return titleElement.textContent || '';
-  }
-  return '';
 }
 
 // find .body > article > h4 is title berita
@@ -36,8 +29,8 @@ export async function getArticles(html: string): Promise<string> {
             const a_href = article.href;
             const a_title = article.querySelector<HTMLHeadingElement>('h4').textContent.trim();
             return {
-                a_href,
-                a_title
+                href: a_href,
+                title: a_title
             };
         });
     } else {

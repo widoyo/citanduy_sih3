@@ -1,4 +1,5 @@
 import { parseHTML } from 'linkedom';
+import { KOTA_TO_FETCH } from '$env/static/private';
 
 /**
  * Fetches the weather forecast data from BMKG and parses the days from the header table.
@@ -76,7 +77,8 @@ export async function parsePrakiraan(html: string) {
         }
     }
     //console.log('Parsed forecast data:', forecastData);
-    const kotas = ['banjar', 'tasikmalaya', 'ciamis', 'kuningan', 'pangandaran', 'cilacap', 'banyumas'];
+    const kota_to_show = KOTA_TO_FETCH.replace(/'/g, '"');
+    const kotas = JSON.parse(kota_to_show);
     // Filter the forecast data to include only the word of cities we are interested in
     const filteredForecast = forecastData.filter((data) => {
         return kotas.some((kota) => {

@@ -84,7 +84,7 @@
   <div class="text-center border-t-2 border-t-gray-400 border-b-1 border-b-gray-400 py-2">
     <p class=" backdrop-blur-sm">
       <span class="me-3 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
-    <a class="me-5 text-white" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[news_index].a_href}">{data.berita[news_index].a_title}</a> &dash; <a href="#berita" class="ms-3 italic text-white">berita lain...</a>
+    <a class="me-5 text-white" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[news_index].href}">{data.berita[news_index].title}</a> &dash; <a href="#berita" class="ms-3 italic text-white">berita lain...</a>
   </p>
   </div>
 </section>
@@ -204,7 +204,7 @@
   </div>
     <ul class="list-disc ms-5">
     {#each data.berita as item}
-      <li class="pb-3"><a href="https://sda.pu.go.id/balai/bbwscitanduy/{item.a_href}" title="{item.a_title}"><TruncatedText text={item.a_title} /></a></li>
+      <li class="pb-3"><a href="https://sda.pu.go.id/balai/bbwscitanduy/{item.href}" title="{item.title}"><TruncatedText text={item.title} /></a></li>
     {/each}
     </ul>
 </section>

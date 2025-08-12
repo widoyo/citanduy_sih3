@@ -1,29 +1,29 @@
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
 export const prerender = false;
-import type { PageLoad } from './$types';
+import { KOTA_TO_FETCH, URL_PRAKIRAAN_JABAR, URL_PRAKIRAAN_JATENG } from '$env/static/private';
+import type { PageServerLoad } from './$types';
 
 
 import { fetchPrakiraan, parsePrakiraan } from '$lib/data/prakiraanFetcher.ts';
 import { fetchBeritaCty, getArticles } from '$lib/data/beritaGrabber.ts';
 import { fetchRain, getWlevel } from '$lib/data/hidrologiFetcher.ts'; // Import to ensure it's included in the build
 
-export const load: PageLoad = async () => {
-    const html = await fetchPrakiraan('https://www.bmkg.go.id/cuaca/prakiraan-cuaca/32');
-    const prakiraanList = await parsePrakiraan(html);
+export const load: PageServerLoad = async (event) => {
+    const kv = event.platform.env.KV;
 
-    const html2 = await fetchPrakiraan('https://www.bmkg.go.id/cuaca/prakiraan-cuaca/33');
-    const prakiraanList2 = await parsePrakiraan(html2);
+    const cuaca = await kv.get('prakiraan_cuaca');
+    const beritaCty = await kv.get('berita_cty');
 
-    // Append prakiraanList2 into prakiraanList
-    const combinedPrakiraanList = [...prakiraanList, ...prakiraanList2];
+    //const beritaHtml = await fetchBeritaCty();
+    const berita = JSON.parse(beritaCty || '[]');
 
-    const beritaHtml = await fetchBeritaCty();
-    const berita = await getArticles(beritaHtml);
+    // Fetch rain data
+    // and wlevel data
     const rainData = await fetchRain();
 
 	// Initial desired order — lowercase substrings
-	const initialOrder = ['tasikmalaya', 'ciamis', 'kuningan', 'pangandaran', 'banjar', 'banyumas', 'cilacap'];
+	const initialOrder = JSON.parse(KOTA_TO_FETCH.replace(/'/g, '"'));
 
 	// Track which kabupaten keyword matched which items
 	const orderedGrouped: { key: string; label: string; items: typeof rainData }[] = [];
@@ -129,7 +129,7 @@ export const load: PageLoad = async () => {
     }
 
     return {
-        prakiraanList: combinedPrakiraanList,
+        prakiraanList: JSON.parse(cuaca),
         berita,
         groupedRainData: orderedGrouped,
         rainData: rainData.items,
