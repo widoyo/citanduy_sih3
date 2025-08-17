@@ -26,10 +26,37 @@
       maxZoom: 18,
     }).addTo(map);
 
-    L.marker([-7.35, 108.22])
+    L.circleMarker([-7.546522222, 108.3791056], 
+                                    {  radius: 6,
+                                color: '#aa0000',
+                                fillColor: 'red',
+                                fillOpacity: 0.8,
+                                weight: 2}
+
+    )
       .addTo(map)
-      .bindPopup('Contoh Sumur Pantau')
-      .openPopup();
+      .bindPopup(`<div style="padding:4px; min-width:220px;">
+                    <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
+                    <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau</div>
+                    <div style="font-size:0.95em; color:#555;">
+                        <span>UPTD PSDA WS Citanduy, DInas SDA Provinsi Jawa Barat (DISTAM-JB)</span><br>
+                    </div>
+                </div>`);
+    L.circleMarker([-7.341769444, 108.2153861], 
+                                      {  radius: 6,
+                                color: '#aa0000',
+                                fillColor: 'red',
+                                fillOpacity: 0.8,
+                                weight: 2}
+)
+      .addTo(map)
+      .bindPopup(`<div style="padding:4px; min-width:220px;">
+                    <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
+                    <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau</div>
+                    <div style="font-size:0.95em; color:#555;">
+                        <span>PT. Asia San Prima</span><br>
+                    </div>
+                </div>`);
   });
 </script>
 
@@ -191,8 +218,9 @@
 
 <section id="hidrogeologi" class="mt-10 border-t border-t-gray-200">
 <div class="py-5 mt-5">
-  <div class="text-center">
-    <h2 class="text-3xl font-bold my-5 md:tracking-widest">Air Tanah</h2>
+  <div class="text-center my-5 pb-5">
+    <h2 class="text-3xl font-bold my-5 md:tracking-widest">Sumur Pantau &amp; Cadangan Air Tanah</h2>
+    <p class="text-gray-500">sumber: <a href="https://geologi.esdm.go.id/patgtl">Badan Geologi: Pusat Air Tanah dan Geologi Tata Lingkungan<ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
 </div>
   <div bind:this={mapContainer} class="w-full h-[400px] max-w-screen-lg mx-auto rounded shadow"></div>

@@ -1,12 +1,10 @@
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
 export const prerender = false;
-import { KOTA_TO_FETCH, URL_PRAKIRAAN_JABAR, URL_PRAKIRAAN_JATENG } from '$env/static/private';
+import { KOTA_TO_FETCH } from '$env/static/private';
 import type { PageServerLoad } from './$types';
 
 
-import { fetchPrakiraan, parsePrakiraan } from '$lib/data/prakiraanFetcher.ts';
-import { fetchBeritaCty, getArticles } from '$lib/data/beritaGrabber.ts';
 import { fetchRain, getWlevel } from '$lib/data/hidrologiFetcher.ts'; // Import to ensure it's included in the build
 
 export const load: PageServerLoad = async (event) => {
