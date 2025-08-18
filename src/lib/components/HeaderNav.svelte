@@ -9,7 +9,7 @@
 	</NavBrand>
 	<div class="flex gap-2 md:hidden">
 		<Button size="sm" href="https://sihka.bbwscitanduy.id/ews" class="bg-red-500"><BellRingOutline class="inline me-1" /> EWS</Button>
-		<Button size="sm" href="/geo" outline={true}><GlobeOutline class="inline me-1" /> Geospatial</Button>
+		<Button size="sm" href="/geo" outline={true}><GlobeOutline class="inline me-1" /></Button>
 		<NavHamburger />
 	</div>
 	<NavUl>

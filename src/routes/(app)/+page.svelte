@@ -100,7 +100,7 @@
 >
   <div class="absolute inset-0 flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full text-center">
-      <p class="text-4xl text-shadow-lg/30 text-white my-4 font-light">Sistem Informasi<br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
+      <p class="text-4xl text-shadow-lg/30 text-white my-4">Sistem Informasi<br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
   </div>
   </div>
   <div class="flex items-center justify-center">
@@ -110,14 +110,14 @@
 </div>
   <div class="text-center border-t-2 border-t-gray-400 border-b-1 border-b-gray-400 py-2">
     <p class=" backdrop-blur-sm">
-      <span class="me-3 mt-5 bg-gray-400 text-white text-xs p-1">BERITA TERBARU</span>
+      <span class="me-3 mt-5 bg-gray-800 rounded-md text-white text-xs p-1">BERITA TERBARU</span>
     <a class="me-5 text-white" href="https://sda.pu.go.id/balai/bbwscitanduy/{data.berita[news_index].href}">{data.berita[news_index].title}</a> &dash; <a href="#berita" class="ms-3 italic text-white">berita lain...</a>
   </p>
   </div>
 </section>
 <section id="meteorologi" class="py-5 mt-9">
   <div class="text-center my-5 pb-5">
-  <h2 class="text-3xl font-bold mt-5 md:tracking-widest">
+  <h2 class="text-3xl mt-5 md:tracking-widest">
     Prakiraan Cuaca
   </h2>
   <p class="text-gray-500">sumber: <a href="https://www.bmkg.go.id">https://www.bmkg.go.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
@@ -156,7 +156,7 @@
 <section id="hidrologi" class="mt-10 border-t border-t-gray-200">
 <div class="py-5 mt-5">
   <div class="text-center my-5 pb-5">
-    <h2 class="text-3xl font-bold md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
+    <h2 class="text-3xl md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
   <h3 class="text-2xl mt-10 mb-5">Hujan</h3>
@@ -219,7 +219,7 @@
 <section id="hidrogeologi" class="mt-10 border-t border-t-gray-200">
 <div class="py-5 mt-5">
   <div class="text-center my-5 pb-5">
-    <h2 class="text-3xl font-bold my-5 md:tracking-widest">Sumur Pantau &amp; Cadangan Air Tanah</h2>
+    <h2 class="text-3xl my-5 md:tracking-widest">Sumur Pantau &amp; Cadangan Air Tanah</h2>
     <p class="text-gray-500">sumber: <a href="https://geologi.esdm.go.id/patgtl">Badan Geologi: Pusat Air Tanah dan Geologi Tata Lingkungan<ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
 </div>
@@ -228,7 +228,7 @@
 
 <section id="berita" class="mt-10 border-t border-t-gray-200">
   <div class="text-center mb-9">
-    <h2 class="text-3xl font-bold my-5">Berita Kegiatan</h2>
+    <h2 class="text-3xl my-5 md:tracking-widest">Berita Kegiatan</h2>
   </div>
     <ul class="list-disc ms-5">
     {#each data.berita as item}
@@ -238,7 +238,7 @@
 </section>
 <section id="mitra" class="mt-10 border-t border-t-gray-200">
   <div class="text-center mb-9">
-    <h2 class="text-3xl font-bold my-5">Mitra Kerja</h2>
+    <h2 class="text-3xl my-5 md:tracking-widest">Mitra Kerja</h2>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
     <div class="">

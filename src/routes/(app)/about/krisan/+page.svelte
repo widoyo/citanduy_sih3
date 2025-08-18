@@ -1,169 +1,44 @@
-<script>
-  let nama = '';
+<script lang="ts">
+  import { Button, Input, Label, Textarea } from 'flowbite-svelte';
+  import { ArrowUpRightFromSquareOutline } from 'flowbite-svelte-icons';
+
+  let name = '';
   let email = '';
-  let pesan = '';
-  let emailError = '';
-  let successMessage = '';
-  let errorMessage = '';
-  let isLoading = false; // Untuk menunjukkan status loading
+  let comment = '';
 
-  // Ganti dengan URL Aplikasi Web Google Apps Script Anda yang sudah disalin
-  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGgaw2HOXs4ZTXEsXnA5wpFYDFWnOPcarLrDgAFze7yAn3z8Br0dyYfMswjtoCJMNgcQ/exec';
-  
-  //const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuqZUToSIbwlJ7XmaJ2MiK9D22vFfikla2oCWuOjt2/dev';
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
+  function handleSubmit() {
+    // Handle form submission logic here
+    console.log('Form submitted:', { name, email, comment });
   }
 
-  async function handleSubmit() {
-    successMessage = '';
-    errorMessage = '';
-    emailError = '';
-
-    // Validasi email di sisi klien
-    if (!validateEmail(email)) {
-      emailError = 'Email tidak valid.';
-      return; // Hentikan proses pengiriman jika email tidak valid
-    }
-
-    isLoading = true; // Aktifkan loading
-    try {
-      const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nama, email, pesan }),
-      });
-
-      const result = await response.json();
-
-      if (result.status === 'success') {
-        successMessage = 'Pesan Anda berhasil dikirim!';
-        // Reset form setelah berhasil
-        nama = '';
-        email = '';
-        pesan = '';
-      } else {
-        errorMessage = `Gagal mengirim pesan: ${result.message || 'Terjadi kesalahan tidak dikenal.'}`;
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      errorMessage = 'Terjadi kesalahan saat menghubungi server. Silakan coba lagi nanti.';
-    } finally {
-      isLoading = false; // Nonaktifkan loading
-    }
-  }
 </script>
 
-<style>
-  form {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  div {
-    margin-bottom: 15px;
-  }
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Agar padding tidak menambah lebar */
-    font-size: 16px;
-  }
-  textarea {
-    resize: vertical; /* Izinkan textarea diubah ukurannya secara vertikal */
-    min-height: 100px;
-  }
-  button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #0056b3;
-  }
-  button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  .error-message {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
-  }
-  .success-message {
-    color: green;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .alert-error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-</style>
-
-<h1>Kirim Pesan Anda</h1>
-
-<form on:submit|preventDefault={handleSubmit}>
-  {#if errorMessage}
-    <p class="alert-error">{errorMessage}</p>
-  {/if}
-
-  <div>
-    <label for="nama">Nama:</label>
-    <input type="text" id="nama" bind:value={nama} required />
+<section id="hero">
+  <div class="flex flex-col md:flex-row gap-4 items-center p-5">
+    <div class="w-full md:basis-1/3">
+      <h1 class="mb-5 font-extrabold text-4xl font-light">Kritik &amp; Saran</h1>
+      <form method="POST">
+        <div class="mb-4">
+          <Label for="name">Nama</Label>
+          <Input id="name" bind:value={name} type="text" />
+        </div>
+        <div class="mb-4">
+          <label for="email">Email</label>
+          <Input id="email" bind:value={email} type="email" />
+        </div>
+        <div class="mb-4">
+          <label for="comment">Pesan</label>
+          <Textarea id="comment" bind:value={comment} class="w-full" />
+        </div>
+        <Button onclick={handleSubmit} class="mt-4">Kirim</Button>
+      </form>  
+    </div>
+    <div class="w-full md:basis-2/3 ms-5">
+      <p class="text-2xl text-gray-500 mt-5 font-light">
+        Untuk kritik, saran, atau pertanyaan, silakan isi formulir di samping atau hubungi kami melalui email.
+      </p>
+      <p class="text-xl text-gray-500 my-4 font-light">
+        Email: <a href="mailto:widoyo@gmail.com">kami</a></p>
+    </div>
   </div>
-
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" bind:value={email} required />
-    {#if emailError}
-      <p class="error-message">{emailError}</p>
-    {/if}
-  </div>
-
-  <div>
-    <label for="pesan">Pesan:</label>
-    <textarea id="pesan" bind:value={pesan} required></textarea>
-  </div>
-
-  <button type="submit" disabled={isLoading}>
-    {#if isLoading}
-      Mengirim...
-    {:else}
-      Kirim Pesan
-    {/if}
-  </button>
-
-  {#if successMessage}
-    <p class="success-message">{successMessage}</p>
-  {/if}
-</form>
+</section>

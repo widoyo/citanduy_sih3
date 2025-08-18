@@ -3,7 +3,7 @@ import { parse } from 'csv-parse';
 import * as path from 'path';
 
 
-interface Pos {
+interface PosBbwsCty {
     id: number;
     nama: string;
     tipe: string;
