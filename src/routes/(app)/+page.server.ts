@@ -133,6 +133,5 @@ export const load: PageServerLoad = async (event) => {
         rainData: rainData.items,
         wlevelData: wlevelData.items,
         groupedWLevelData,
-        posCty: data
     };
 }
