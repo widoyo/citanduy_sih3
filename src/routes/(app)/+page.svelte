@@ -277,7 +277,7 @@
 
     <div class="">
       <img src="/img/bpdas_cimata.png" alt="Badan Pengelola DAS Cimanuk Cisanggarung">
-      <p class="text-xs pt-3">Badan Pengelola Daerah Aliran Sungai Hutan Lindung Cimanuk Citanduy <a href="https://www.instagram.com/bpdas_cimanukcitanduy/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
+      <p class="text-xs pt-3">Badan Pengelola Daerah Aliran Sungai Cimanuk Citanduy <a href="https://www.instagram.com/bpdas_cimanukcitanduy/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
     </div>
 
     <div>
