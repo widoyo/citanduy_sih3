@@ -132,6 +132,7 @@ export const load: PageServerLoad = async (event) => {
         groupedRainData: orderedGrouped,
         rainData: rainData.items,
         wlevelData: wlevelData.items,
-        groupedWLevelData
+        groupedWLevelData,
+        posCty: data
     };
 }

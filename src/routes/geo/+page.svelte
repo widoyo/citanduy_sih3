@@ -1,8 +1,9 @@
 <script lang="ts">
   import "../../app.css";
+  import type { PageProps } from './$types';
   import { onMount } from 'svelte';
   import HeaderNav  from "$lib/components/HeaderNav.svelte";
-
+  let { data }: PageProps = $props();
   let map;
 
   onMount(() => {
@@ -15,6 +16,15 @@
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
+      data.posCty.forEach((pos: any) => {
+        console.log('Adding marker for:', pos.nama, pos.longitude);
+        if (pos.latitude, pos.longitude) {
+          L.circleMarker([pos.latitude, pos.longitude])
+            .addTo(map)
+            .bindPopup(`${pos.nama} (${pos.jenis_pos})`)
+            .openPopup();
+        }
+      });
       // Example marker
       L.marker([-7.3518, 108.2208])
         .addTo(map)
