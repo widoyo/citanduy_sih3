@@ -12,6 +12,8 @@
 
   let mapContainer;
   let dasLayer: L.GeoJSON;
+  let catJabar: L.GeoJSON;
+  let catJateng: L.GeoJSON;
 
   onMount(async () => {
     // Prevent code from running on the server
@@ -35,7 +37,27 @@
         fillOpacity: 0.01,
       },
     }).addTo(map);
-    
+
+    catJabar = L.geoJSON(data.cat_jabar, {
+      style: {
+        color: '#009900',
+        weight: 2,
+        opacity: 0.9,
+        fillOpacity: 0.4,
+      },
+
+    }).addTo(map);
+
+    catJateng = L.geoJSON(data.cat_jateng, {
+      style: {
+        color: '#000099',
+        weight: 2,
+        opacity: 0.9,
+        fillOpacity: 0.4,
+      },
+
+    }).addTo(map);
+
     L.circleMarker([-7.546522222, 108.3791056], 
                                     {  radius: 6,
                                 color: '#aa0000',
@@ -49,24 +71,53 @@
                     <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
                     <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau</div>
                     <div style="font-size:0.95em; color:#555;">
-                        <span>UPTD PSDA WS Citanduy, DInas SDA Provinsi Jawa Barat (DISTAM-JB)</span><br>
+                        <span>UPTD PSDA WS Citanduy, Dinas SDA Provinsi Jawa Barat (DISTAM-JB)</span><br>
                     </div>
                 </div>`);
-    L.circleMarker([-7.341769444, 108.2153861], 
-                                      {  radius: 6,
-                                color: '#aa0000',
-                                fillColor: 'red',
-                                fillOpacity: 0.8,
-                                weight: 2}
-)
-      .addTo(map)
-      .bindPopup(`<div style="padding:4px; min-width:220px;">
-                    <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
-                    <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau</div>
-                    <div style="font-size:0.95em; color:#555;">
-                        <span>PT. Asia San Prima</span><br>
-                    </div>
-                </div>`);
+      L.circleMarker([-7.341769444, 108.2153861], {  
+        radius: 6,
+        color: '#aa0000',
+        fillColor: 'red',
+        fillOpacity: 0.8,
+        weight: 2})
+        .addTo(map)
+        .bindPopup(`<div style="padding:4px; min-width:220px;">
+                      <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
+                      <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau</div>
+                      <div style="font-size:0.95em; color:#555;">
+                          <span>PT. Asia San Prima</span><br>
+                      </div>
+                  </div>`);
+      L.circleMarker([-7.709609, 109.01053], {  
+        radius: 6,
+        color: '#aa0000',
+        fillColor: 'red',
+        fillOpacity: 0.8,
+        weight: 2})
+        .addTo(map)
+        .bindPopup(`<div style="padding:4px; min-width:220px;">
+                      <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
+                      <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau Air Tanah ESDM Jawa Tengah</div>
+                      <div style="font-size:0.95em; color:#555;">
+                          <span>PT. Pertamina, Cilacap</span><br>
+                      </div>
+                  </div>`);
+
+      L.circleMarker([-7.44823, 108.9241], {  
+        radius: 6,
+        color: '#aa0000',
+        fillColor: 'red',
+        fillOpacity: 0.8,
+        weight: 2})
+        .addTo(map)
+        .bindPopup(`<div style="padding:4px; min-width:220px;">
+                      <h4 style="margin:0 0 8px 0; color:#FF851B;">HidroGeologi</h4>
+                      <div style="font-weight:bold; margin-bottom:6px;">Sumur Pantau Air Tanah ESDM Jawa Tengah</div>
+                      <div style="font-size:0.95em; color:#555;">
+                          <span>Jalan Karangpucung, Lumbir</span><br>
+                      </div>
+                  </div>`);
+    
     if (dasLayer.getBounds().isValid()) {
       map.fitBounds(dasLayer.getBounds());
     }
@@ -102,6 +153,20 @@ function addLegend(map: L.Map) {
         color: 'red',
         border: '#aa0000',
         size: 12
+      },
+      {
+        label: 'Cadangan Air Tanah Jabar',
+        icon: 'line',
+        color: '#00dd00',
+        width: 20,
+        height: 2
+      },
+      {
+        label: 'Cadangan Air Tanah Jateng',
+        icon: 'line',
+        color: '#000099',
+        width: 20,
+        height: 2
       }
     ];
 
@@ -115,7 +180,7 @@ function addLegend(map: L.Map) {
     legendItems.forEach(item => {
       if (item.icon === 'line') {
         html += `
-          <div class="legend-item">
+          <div class="legend-item" style="padding-bottom:12px;">
             <div class="legend-icon line" style="background-color: ${item.color}; width: ${item.width}px; height: ${item.height}px;"></div>
             <span class="legend-label">${item.label}</span>
           </div>

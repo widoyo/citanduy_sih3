@@ -13,6 +13,12 @@ export const load: PageServerLoad = async (event) => {
     const kv = event.platform.env.KV;
 
     const das_cty = await loadGeoJSON('das_citanduy');
+    const catJabar = await loadGeoJSON('cat_cty_jabar');
+    const catJateng = await loadGeoJSON('cat_cty_jateng');
+
+    //console.log('Loaded das_cty:', das_cty.features.length);
+    //console.log('Loaded cat_jabar:', catJabar.features.length);
+    //console.log('Loaded cat_jateng:', catJateng.features.length);
     
     const cuaca = await kv.get('prakiraan_cuaca');
     const beritaCty = await kv.get('berita_cty');
@@ -137,6 +143,8 @@ export const load: PageServerLoad = async (event) => {
         rainData: rainData.items,
         wlevelData: wlevelData.items,
         groupedWLevelData,
-        das_cty
+        das_cty,
+        cat_jateng: catJateng,
+        cat_jabar: catJabar
     };
 }
