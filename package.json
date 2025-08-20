@@ -43,6 +43,7 @@
 		"wrangler": "^4.28.1"
 	},
 	"dependencies": {
+		"@types/leaflet": "^1.9.20",
 		"better-sqlite3": "^12.2.0",
 		"csv-parse": "^6.0.0",
 		"dotenv": "^17.0.0",

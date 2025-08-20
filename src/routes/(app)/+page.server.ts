@@ -2,6 +2,8 @@
 // it so that it gets served as a static asset in production
 export const prerender = false;
 import { KOTA_TO_FETCH } from '$env/static/private';
+import { loadGeoJSON } from '$lib/data/loadGeoJSON';
+
 import type { PageServerLoad } from './$types';
 
 
@@ -10,6 +12,8 @@ import { fetchRain, getWlevel } from '$lib/data/hidrologiFetcher.ts'; // Import 
 export const load: PageServerLoad = async (event) => {
     const kv = event.platform.env.KV;
 
+    const das_cty = await loadGeoJSON('das_citanduy');
+    
     const cuaca = await kv.get('prakiraan_cuaca');
     const beritaCty = await kv.get('berita_cty');
 
@@ -133,5 +137,6 @@ export const load: PageServerLoad = async (event) => {
         rainData: rainData.items,
         wlevelData: wlevelData.items,
         groupedWLevelData,
+        das_cty
     };
 }

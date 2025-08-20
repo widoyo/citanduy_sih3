@@ -11,6 +11,7 @@
     import('leaflet/dist/leaflet.css');
 
   let mapContainer;
+  let dasLayer: L.GeoJSON;
 
   onMount(async () => {
     // Prevent code from running on the server
@@ -26,6 +27,15 @@
       maxZoom: 18,
     }).addTo(map);
 
+    dasLayer = L.geoJSON(data.das_cty, {
+      style: {
+        color: '#dd0000',
+        weight: 2,
+        opacity: 0.9,
+        fillOpacity: 0.01,
+      },
+    }).addTo(map);
+    
     L.circleMarker([-7.546522222, 108.3791056], 
                                     {  radius: 6,
                                 color: '#aa0000',
@@ -57,14 +67,87 @@
                         <span>PT. Asia San Prima</span><br>
                     </div>
                 </div>`);
+    if (dasLayer.getBounds().isValid()) {
+      map.fitBounds(dasLayer.getBounds());
+    }
+    addLegend(map);
+    return () => {
+      if (map) {
+        map.remove();
+      }
+    };
   });
+
+function addLegend(map: L.Map) {
+  const legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function () {
+    const div = L.DomUtil.create('div', 'legend custom-legend');
+    div.style.backgroundColor = 'white';
+    div.style.padding = '10px';
+    div.style.borderRadius = '5px';
+    div.style.boxShadow = '0 1px 5px rgba(0,0,0,0.4)';
+
+    const legendItems = [
+      {
+        label: 'Batas DAS',
+        icon: 'line',
+        color: '#dd0000',
+        width: 20,
+        height: 2
+      },
+      {
+        label: 'Sumur Pantau',
+        icon: 'circle',
+        color: 'red',
+        border: '#aa0000',
+        size: 12
+      }
+    ];
+
+    let html = `
+      <div class="legend-header" style="margin-bottom: 14px;">
+        <h4>LEGENDA</h4>
+      </div>
+      <div class="legend-items">
+    `;
+
+    legendItems.forEach(item => {
+      if (item.icon === 'line') {
+        html += `
+          <div class="legend-item">
+            <div class="legend-icon line" style="background-color: ${item.color}; width: ${item.width}px; height: ${item.height}px;"></div>
+            <span class="legend-label">${item.label}</span>
+          </div>
+        `;
+      } else if (item.icon === 'circle') {
+        html += `
+          <div class="legend-item">
+            <div class="legend-icon circle" style="border-radius: 50%;background-color: ${item.color}; border: 2px solid ${item.border}; width: ${item.size}px; height: ${item.size}px;"></div>
+            <span class="legend-label">${item.label}</span>
+          </div>
+        `;
+      } else if (item.icon === 'pattern') {
+        html += `
+          <div class="legend-item">
+            <div class="legend-icon pattern" style="background: ${item.pattern}; width: ${item.width}px; height: ${item.height}px;"></div>
+            <span class="legend-label">${item.label}</span>
+          </div>
+        `;
+      }
+    });
+
+    html += '</div>';
+    div.innerHTML = html;
+    
+    return div;
+  };
+
+  legend.addTo(map);
+}
 </script>
 
 <style>
-  .leaflet-container {
-  width: 100%;
-  height: 100%;
-  }
   .masonry-grid {
     column-count: 1; /* Default untuk mobile */
     column-gap: 1rem; /* Sama dengan gap-4 di Tailwind */
@@ -87,6 +170,59 @@
     margin-bottom: 1rem;
   }
 
+  /** Legenda */
+  .custom-legend {
+    background: white !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .legend-header h4 {
+    margin: 0 0 12px 0;
+    padding: 0;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .legend-icon {
+    flex-shrink: 0;
+  }
+
+  .legend-icon.line {
+    border-radius: 1px;
+  }
+
+  .legend-icon.circle {
+    border-radius: 50%;
+  }
+
+  .legend-icon.pattern {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .legend-label {
+    font-size: 11px;
+    color: #555;
+    font-weight: 500;
+  }
 </style>
 <svelte:head>
   <title>SIH3 WS Citanduy</title>
