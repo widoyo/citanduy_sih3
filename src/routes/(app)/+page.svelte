@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageProps } from './$types';
-  import { ArrowUpRightFromSquareOutline, ArrowDownOutline, ArrowUpOutline } from 'flowbite-svelte-icons';
+  import { ArrowUpRightFromSquareOutline, ArrowDownOutline, ArrowUpOutline, DrawSquareOutline } from 'flowbite-svelte-icons';
   import TruncatedText  from '$lib/components/TruncatedText.svelte';
   import { Button } from 'flowbite-svelte';
   let { data }: PageProps = $props();
@@ -396,7 +396,7 @@ function addLegend(map: L.Map) {
       {#each group.items as item}
         <li class="mb-6">
           {item.pos.nama} <small class="font-light text-gray-500"><b class="font-bold">+{item.pos.elevasi}</b> mdpl</small><br>
-          {#if item.pos.kabupaten}<small class="font-light text-gray-500">{item.pos.kabupaten}</small><br>{/if}
+          {#if item.pos.kabupaten}<small class="font-light ">ds {item.pos.desa}, kec. {item.pos.kecamatan}, kab. {item.pos.kabupaten}</small><br>{/if}
           {#if item.pos.sh }
           <small class="font-light text-gray-500">SIAGA</small> <span class="text-xs text-white bg-green-700 rounded-xs px-1">{(item.pos.sh/100).toFixed(1)}</span> <span class="text-xs text-gray bg-yellow-500 rounded-xs px-1">{(item.pos.sk / 100).toFixed(1)}</span> <span class="text-xs text-white bg-red-700 rounded-xs px-1">{(item.pos.sm / 100).toFixed(1)}</span><br>
           {/if}
