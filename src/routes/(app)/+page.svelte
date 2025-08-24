@@ -2,6 +2,9 @@
   import type { PageProps } from './$types';
   import { ArrowUpRightFromSquareOutline, ArrowDownOutline, ArrowUpOutline, DrawSquareOutline } from 'flowbite-svelte-icons';
   import TruncatedText  from '$lib/components/TruncatedText.svelte';
+  import Rain from '$lib/components/Rain.svelte';
+  import RiverWaterLevel from '$lib/components/RiverWaterLevel.svelte';
+  import Mitra from '$lib/components/Mitra.svelte';
   import { Button } from 'flowbite-svelte';
   let { data }: PageProps = $props();
   let news_index = Math.floor(Math.random() * 5);
@@ -213,27 +216,6 @@ function addLegend(map: L.Map) {
 </script>
 
 <style>
-  .masonry-grid {
-    column-count: 1; /* Default untuk mobile */
-    column-gap: 1rem; /* Sama dengan gap-4 di Tailwind */
-  }
-
-  @media (min-width: 768px) { /* md breakpoint */
-    .masonry-grid {
-      column-count: 2;
-    }
-  }
-
-  @media (min-width: 1024px) { /* lg breakpoint */
-    .masonry-grid {
-      column-count: 3;
-    }
-  }
-
-  .masonry-grid > div {
-    break-inside: avoid-column; /* Penting untuk mencegah kartu terpotong */
-    margin-bottom: 1rem;
-  }
 
   /** Legenda */
   .custom-legend {
@@ -360,61 +342,10 @@ function addLegend(map: L.Map) {
     <h2 class="text-3xl md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
-  <h3 class="text-2xl mt-10 mb-5">Hujan</h3>
-  {#if data.rainData.length > 0}
-    <p class="text-sm text-gray-500">Hujan terjadi hari ini di <b>{data.rainData.length}</b> lokasi dari <b>51</b> Pos Hujan</p>
-  {:else}
-    <p class="text-sm text-gray-500">Tidak ada hujan hari ini.</p>
-  {/if}
-  <div class="masonry-grid">
-  {#if data.rainData.length > 0}
-  {#each data.groupedRainData as group}
-  <div class="mb-5" style="margin-bottom: 3rem;">
-    <h2 class="text-xl font-bold border-b-2 pb-1">{group.label} 
-      <span class="ms-2 font-light text-xs text-gray-500">HUJAN</span> <span class="font-light">{group.items.reduce( (acc, item) => acc + item.telemetri.rain24, 0).toFixed(1)}</span> <span class="font-light text-xs text-gray-500">mm</span></h2>
-    <ul class="mt-3">
-      {#each group.items as item}
-        <li class="grid grid-cols-2 gap-2">
-          <span>{item.pos.nama.replace('PCH ', '')}</span> 
-          <span class="text-right">{item.telemetri.rain24.toFixed(1)} <span class="font-light text-xs text-gray-500">mm</span></span></li>
-      {/each}
-    </ul>
-  </div>
-  {/each}
-  {/if}
+  <Rain {...data} />
 </div>
 <div>
-
-  <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
-  <p class="text-sm mb-3 text-gray-500">T15: thd 15 menit lalu, T60: thd 60 menit lalu</p>
-  <div class="masonry-grid">
-    {#each data.groupedWLevelData as group}
-    <div class="border border-gray-200 rounded-sm p-2 shadow-xs">
-    <h2 class="text-lg/5 font-bold mb-3"><small class="text-gray-500 font-light">sungai</small><br>
-      {group.sungai}</h2>
-    <ol class="list-decimal ms-4">
-      {#each group.items as item}
-        <li class="mb-6">
-          {item.pos.nama} <small class="font-light text-gray-500"><b class="font-bold">+{item.pos.elevasi}</b> mdpl</small><br>
-          {#if item.pos.kabupaten}<small class="font-light ">ds {item.pos.desa}, kec. {item.pos.kecamatan}, kab. {item.pos.kabupaten}</small><br>{/if}
-          {#if item.pos.sh }
-          <small class="font-light text-gray-500">SIAGA</small> <span class="text-xs text-white bg-green-700 rounded-xs px-1">{(item.pos.sh/100).toFixed(1)}</span> <span class="text-xs text-gray bg-yellow-500 rounded-xs px-1">{(item.pos.sk / 100).toFixed(1)}</span> <span class="text-xs text-white bg-red-700 rounded-xs px-1">{(item.pos.sm / 100).toFixed(1)}</span><br>
-          {/if}
-          <small class="font-light text-gray-500" title="{item.telemetri.sampling}">TMA</small> {((item.telemetri.wlevel?) / 100).toFixed(1)} m, 
-          <small class="font-light text-gray-500">T60</small> 
-          {#if item.telemetri.trend.t_60_min.trend === 'naik'}<ArrowUpOutline class="inline w-4 h-4 text-red-500"/>
-          {:else if item.telemetri.trend.t_60_min.trend === 'turun'}<ArrowDownOutline class="inline w-4 h-4 text-green-500" />
-          {:else}-{/if}
-          <small class="font-light text-gray-500">T15</small> 
-          {#if item.telemetri.trend.t_15_min.trend === 'naik'}<ArrowUpOutline class="inline w-4 h-4 text-red-500"/>
-          {:else if item.telemetri.trend.t_15_min.trend === 'turun'}<ArrowDownOutline class="inline w-4 h-4 text-green-500" />
-          {:else}-{/if}
-        </li>
-      {/each}
-    </ol>
-    </div>
-    {/each} 
-  </div>
+  <RiverWaterLevel {...data} />
 </div>
 </section>
 
@@ -439,69 +370,5 @@ function addLegend(map: L.Map) {
     </ul>
 </section>
 <section id="mitra" class="mt-10 border-t border-t-gray-200">
-  <div class="text-center mb-9">
-    <h2 class="text-3xl my-5 md:tracking-widest">Mitra Kerja</h2>
-  </div>
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
-    <div class="">
-      <img src="/img/bmkg_logo.png" width="70" alt="Stasiun Klimatologi Jawa Barat">
-      <p class="text-xs pt-3">
-        Stasiun Klimatologi Kelas 1 Jawa Barat <a href="https://staklimjabar.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a>
-      </p>
-    </div>
-
-    <div class="">
-      <img src="/img/bmkg_logo.png" width="70" alt="Stasiun Klimatologi Jawa Tengah">
-      <p class="text-xs pt-3">Stasiun Klimatologi Kelas 1 Jawa Tengah <a href="https://iklimjateng.info/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <img src="https://d2s1u1uyrl4yfi.cloudfront.net/dinassda/post/0e93917bd4ef28a9ea5da93da3b32925.png" alt="Dinas Sumber Daya Air Provinsi Jawa Barat">
-      <p class="text-xs pt-3">Dinas Sumber Daya Air Provinsi Jawa Barat <a href="https://dsda.jabarprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <img src="/img/pusdataru_logo.jpeg" width="80" alt="Dinas Sumber Daya Air Provinsi Jawa Tengah">
-      <p class="text-xs pt-3">Dinas Sumber Daya Air Provinsi Jawa Tengah <a href="https://pusdataru.jatengprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div class="">
-      <div class="bg-green-600 p-3 rounded-sm">
-      <img src="https://d2s1u1uyrl4yfi.cloudfront.net/dlh/logo/db4f7efb8a70794e1f8b54cac83dbdda.png" alt="Dinas Lingkungan Hidup Provinsi Jawa Barat">
-      </div>
-      <p class="text-xs pt-3">Dinas Lingkungan Hidup Provinsi Jawa Barat <a href="https://dlh.jabarprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div class="">
-      <img src="/img/jateng_logo.png" width="80" alt="Dinas Lingkungan Hidup Jawa Tengah">
-      <p class="text-xs pt-3">Dinas Lingkungan Hidup dan Kehutanan Jawa Tengah  <a href="https://dlhk.jatengprov.go.id"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div class="">
-      <img src="/img/bpdas_cimata.png" alt="Badan Pengelola DAS Cimanuk Cisanggarung">
-      <p class="text-xs pt-3">Badan Pengelola Daerah Aliran Sungai Cimanuk Citanduy <a href="https://www.instagram.com/bpdas_cimanukcitanduy/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <img src="/img/geologi_logo.png" width="80" alt="PATGTL Badan Geologi">
-      <p class="text-xs pt-3">Badan Geologi Pusat Air Tanah dan Geologi Tata Lingkungan  <a href="https://geologi.esdm.go.id/patgtl"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <div class="bg-blue-950 p-3 rounded-sm">
-      <img src="https://d2s1u1uyrl4yfi.cloudfront.net/esdm/logo/b077949c9613ab40c8655893401dde0d.png" alt="Dinas Energi dan Sumber Daya Mineral Provinsi Jawa Barat">
-      </div>
-      <p class="text-xs pt-3">Dinas Energi dan Sumber Daya Mineral Jawa Barat  <a href="https://esdm.jabarprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <img src="/img/jateng_logo.png" width="80" alt="Dinas Energi dan Sumber Daya Mineral Jawa Tengah">
-      <p class="text-xs pt-3">Dinas Energi dan Sumber Daya Mineral Jawa Tengah <a href="https://esdm.jatengprov.go.id/"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-
-    <div>
-      <img src="/img/cty-logo.png" width="100" alt="Balai Besar Wilayah Sungai Citanduy">
-      <p class="text-xs pt-3">Balai Besar Wilayah Sungai Citanduy <a href="https://sda.pu.go.id/balai/bbwscitanduy"><ArrowUpRightFromSquareOutline class="inline" size="sm" /></a></p>
-    </div>
-  </div>
+  <Mitra />
 </section>

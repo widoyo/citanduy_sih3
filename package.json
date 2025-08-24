@@ -48,6 +48,7 @@
 		"csv-parse": "^6.0.0",
 		"dotenv": "^17.0.0",
 		"leaflet": "^1.9.4",
-		"linkedom": "^0.18.11"
+		"linkedom": "^0.18.11",
+		"simple-sparkline-chart": "^0.4.0"
 	}
 }
