@@ -19,5 +19,16 @@
 	],
 	"observability": {
 		"enabled": true
+	},
+	"env": {
+		// PRODUCTION configuration
+		"production": {
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "${KV_ID_PRODUCTION}" // Will be set via secret
+				}
+			]
+		}
 	}
 }
