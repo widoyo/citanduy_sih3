@@ -14,7 +14,7 @@
 	"kv_namespaces": [
 		{
 		"binding": "KV",
-		"id": ""
+		"id": "1234"
 		}
 	],
 	"observability": {
