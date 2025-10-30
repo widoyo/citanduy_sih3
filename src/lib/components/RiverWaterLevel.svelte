@@ -30,7 +30,7 @@
 
 </style>
 <div>
-  <h3 class="text-2xl mt-10 mb-5">Tinggi Muka Air Sungai</h3>
+  <h3 class="text-2xl font-bold mt-10 mb-5">Tinggi Muka Air Sungai</h3>
   <p class="text-sm mb-3 text-gray-500">
     T15: thd 15 menit lalu, T60: thd 60 menit lalu
   </p>

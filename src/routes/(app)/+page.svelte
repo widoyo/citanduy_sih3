@@ -283,7 +283,7 @@ function addLegend(map: L.Map) {
 >
   <div class="absolute inset-0 flex flex-col md:flex-row gap-4 items-center pb-5">
     <div class="w-full text-center">
-      <p class="text-4xl text-shadow-lg/30 text-white my-4">Sistem Informasi<br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
+      <p class="text-2xl font-bold md:text-6xl md:font-black text-shadow-lg/30 text-white my-4">Sistem Informasi<br>Hidrologi, Hidrometeorologi dan Hidrogeologi</p>
   </div>
   </div>
   <div class="flex items-center justify-center">
@@ -300,7 +300,7 @@ function addLegend(map: L.Map) {
 </section>
 <section id="meteorologi" class="py-5 mt-9">
   <div class="text-center my-5 pb-5">
-  <h2 class="text-3xl mt-5 md:tracking-widest">
+  <h2 class="text-4xl mt-5 font-bold">
     Prakiraan Cuaca
   </h2>
   <p class="text-gray-500">sumber: <a href="https://www.bmkg.go.id">https://www.bmkg.go.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
@@ -339,7 +339,7 @@ function addLegend(map: L.Map) {
 <section id="hidrologi" class="mt-10 border-t border-t-gray-200">
 <div class="py-5 mt-5">
   <div class="text-center my-5 pb-5">
-    <h2 class="text-3xl md:tracking-widest">Hujan &amp; Muka Air Sungai</h2>
+    <h2 class="text-4xl font-bold">Hujan &amp; Muka Air Sungai</h2>
     <p class="text-gray-500">sumber: <a href="https://sihka.bbwscitanduy.id">https://sihka.bbwscitanduy.id <ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
   <Rain {...data} />
@@ -352,7 +352,7 @@ function addLegend(map: L.Map) {
 <section id="hidrogeologi" class="mt-10 border-t border-t-gray-200">
 <div class="py-5 mt-5">
   <div class="text-center my-5 pb-5">
-    <h2 class="text-3xl my-5 md:tracking-widest">Sumur Pantau &amp; Cadangan Air Tanah</h2>
+    <h2 class="text-4xl font-bold my-5">Sumur Pantau &amp; Cadangan Air Tanah</h2>
     <p class="text-gray-500">sumber: <a href="https://geologi.esdm.go.id/patgtl">Badan Geologi: Pusat Air Tanah dan Geologi Tata Lingkungan<ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
 </div>
@@ -360,8 +360,8 @@ function addLegend(map: L.Map) {
 </section>
 
 <section id="berita" class="mt-10 border-t border-t-gray-200">
-  <div class="text-center mb-9">
-    <h2 class="text-3xl my-5 md:tracking-widest">Berita Kegiatan</h2>
+  <div class="text-center my-5 mb-9">
+    <h2 class="text-4xl font-bold mt-5 my-5">Berita Kegiatan</h2>
   </div>
     <ul class="list-disc ms-5">
     {#each data.berita as item}
