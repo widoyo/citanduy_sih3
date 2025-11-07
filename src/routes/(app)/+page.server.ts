@@ -10,7 +10,7 @@ import type { PageServerLoad } from './$types';
 import { fetchRain, getWlevel } from '$lib/data/hidrologiFetcher.ts'; // Import to ensure it's included in the build
 
 export const load: PageServerLoad = async (event) => {
-    const kv = event.platform.env.KV;
+    const kv = event.platform.env?.KV;
 
     const das_cty = await loadGeoJSON('das_citanduy');
     const catJabar = await loadGeoJSON('cat_cty_jabar');
@@ -29,6 +29,7 @@ export const load: PageServerLoad = async (event) => {
     // Fetch rain data
     // and wlevel data
     const rainData = await fetchRain();
+    
 
 	// Initial desired order — lowercase substrings
 	const initialOrder = JSON.parse(KOTA_TO_FETCH.replace(/'/g, '"'));

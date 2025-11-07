@@ -14,6 +14,12 @@
 	"observability": {
 		"enabled": true
 	},
+	"kv_namespaces": [
+		{
+		"binding": "KV",
+		"id": "${KV_ID}"
+		}
+	],
 	"env": {
 		// PRODUCTION configuration
 		"production": {

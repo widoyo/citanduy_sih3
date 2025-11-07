@@ -1,27 +1,27 @@
-export async function fetchRain(): Promise<any> {
+export async function fetchRain(platform): Promise<any> {
   try {
-    const response = await fetch('https://sihka.bbwscitanduy.id/api/rain');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const resp = await platform?.env.KV.get('rain_data_cty');
+    if (resp) {
+      return JSON.parse(resp);
     }
-    const data = await response.json();
-    return data;
+    return { items: []};
   } catch (error) {
     console.error('Error fetching data:', error);
-    throw error; // Re-throw the error for further handling
+    return { items: [] }; // Return empty items on error
+    //throw error; // Re-throw the error for further handling
   }
 }
 
-export async function getWlevel(): Promise<string> {
+export async function getWlevel(platform): Promise<any> {
   try {
-    const response = await fetch('https://sihka.bbwscitanduy.id/api/wlevel');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const resp = await platform?.env.KV.get('wlevel_data_cty');
+    if (resp) {
+      return JSON.parse(resp);
     }
-    const data = await response.json();
-    return data;
+    return { items: []};
   } catch (error) {
     console.error('Error fetching data:', error);
-    throw error; // Re-throw the error for further handling
+    return { items: []};
+    //throw error; // Re-throw the error for further handling
   }
 }
