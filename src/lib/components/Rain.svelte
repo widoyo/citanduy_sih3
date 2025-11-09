@@ -1,11 +1,12 @@
 <script lang="ts">
   import { ArrowUpRightFromSquareOutline } from "flowbite-svelte-icons";
+  import RainChart from "$lib/components/RainChart.svelte";
   let { rainData, groupedRainData } = $props();
 </script>
 
-<h3 class="text-2xl font-bold mt-10 mb-5">Hujan</h3>
+<h3 class="text-2xl font-bold mt-10">Hujan</h3>
 {#if rainData.length > 0}
-  <p class="text-sm text-gray-500">
+  <p class="text-sm text-gray-500 mb-5">
     Hujan terjadi hari ini di <b>{rainData.length}</b> lokasi dari <b>51</b> Pos
     Hujan
   </p>
@@ -22,8 +23,9 @@
         </h2>
         <ul class="mt-3">
           {#each group.items as item}
-            <li class="grid grid-cols-2 gap-2">
+            <li class="grid grid-cols-[1fr_65px_65px] gap-1">
               <span>{item.pos.nama.replace("PCH ", "")}</span>
+              <RainChart telemetri={item.telemetri} />
               <span class="text-right"
                 >{item.telemetri.rain24.toFixed(1)}
                 <span class="font-light text-xs text-gray-500">mm</span></span
@@ -33,6 +35,33 @@
         </ul>
       </div>
     {/each}
+    <div class="text-gray-500 ps-2">
+      <small>
+      <p>Hujan per jam:</p>
+      <ul class="flex gap-4">
+        <li class="flex items-center gap-1">
+          <span class="w-3 h-3 rounded-full" style="background-color: #f63b82"
+          ></span>
+          Sangat Lebat
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="w-3 h-3 rounded-full" style="background-color: #ffa500"
+          ></span>
+          Lebat
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="w-3 h-3 rounded-full" style="background-color: #d6c136"
+          ></span>
+          Sedang
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="w-3 h-3 rounded-full" style="background-color: #20ff20"
+          ></span>
+          Ringan
+        </li>
+      </ul>
+    </small>
+    </div>
   {/if}
 </div>
 
