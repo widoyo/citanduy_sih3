@@ -52,7 +52,7 @@
   @media (min-width: 1024px) {
     /* lg breakpoint */
     .masonry-grid {
-      column-count: 3;
+      column-count: 4;
     }
   }
 

@@ -21,7 +21,7 @@ export const GET = async ({url, platform}) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    platform.env.KV.put(dest_key, JSON.stringify(data));
+    await platform.env.KV.put(dest_key, JSON.stringify(data));
     return json({ok: true, data: data});
   } catch (error) {
     console.error('Error fetching data:', error);

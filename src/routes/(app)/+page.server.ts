@@ -28,7 +28,7 @@ export const load: PageServerLoad = async (event) => {
 
     // Fetch rain data
     // and wlevel data
-    const rainData = await fetchRain();
+    const rainData = await fetchRain(event.platform);
     
 
 	// Initial desired order — lowercase substrings
@@ -94,7 +94,7 @@ export const load: PageServerLoad = async (event) => {
 	// Final: Compose updated kabupatenOrder
 	const finalKabupatenOrder = [...initialOrder, ...Object.keys(remainingGroups)];
 
-    const wlevelData = await getWlevel();
+    const wlevelData = await getWlevel(event.platform);
     // Define your preferred order of sungai (case-insensitive match)
     const sungaiOrder = ['cikidang', 'cikondang', 'cibaruyan', 'citanduy', 'cimuntur', 'cijolang'];
 
