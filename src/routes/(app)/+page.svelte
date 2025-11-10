@@ -356,7 +356,7 @@ function addLegend(map: L.Map) {
     <p class="text-gray-500">sumber: <a href="https://geologi.esdm.go.id/patgtl">Badan Geologi: Pusat Air Tanah dan Geologi Tata Lingkungan<ArrowUpRightFromSquareOutline class="inline" /></a></p>
   </div>
 </div>
-  <div bind:this={mapContainer} class="w-full h-[400px] max-w-screen-lg mx-auto rounded shadow"></div>
+  <div bind:this={mapContainer} style="z-index: 0;" class="w-full h-[400px] max-w-screen-lg mx-auto rounded shadow"></div>
 </section>
 
 <section id="berita" class="mt-10 border-t border-t-gray-200">
