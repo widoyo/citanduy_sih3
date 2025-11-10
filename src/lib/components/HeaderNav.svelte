@@ -2,8 +2,7 @@
     import { Navbar, NavBrand, NavHamburger, NavUl, NavLi, Dropdown, DropdownItem, DropdownDivider, Button } from "flowbite-svelte";
     import { GlobeOutline, ChevronDownOutline, BellRingOutline } from "flowbite-svelte-icons";
 </script>
-
-<Navbar class="fixed start-0 top-0 z-20 w-full px-2 py-2 backdrop-blur-sm text-lg">
+<Navbar class="fixed start-0 top-0 z-[1000] w-full px-2 py-2 backdrop-blur-sm text-lg">
 	<NavBrand href="/" class="flex items-center mb-1">
 		<span class="font-extrabold me-3">SIH3</span> WS Citanduy
 	</NavBrand>

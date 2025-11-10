@@ -52,16 +52,21 @@
 </script>
 
 <style>
-  :global(html), :global(body), #map {
+  :global(html), :global(body) {
     height: 100%;
     margin: 0;
-    margin-top: 40px;
     padding: 0;
   }
 
   #map {
+    position: fixed;
+    top: 92px; /* Adjust to match your navbar height */
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     border: none;
+    z-index: 0;
   }
 </style>
 
