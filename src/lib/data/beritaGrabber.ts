@@ -2,20 +2,30 @@ import { parseHTML } from 'linkedom';
 import { URL_KEGIATAN_BBWSCTY } from '$env/static/private';
 
 /**
- * fetches the news data from a given URL and returns the HTML content.
+ * Fetches the news data from a given URL and returns the HTML content.
+ * @returns Promise<string> HTML content, or empty string if fetch fails
  */
 export async function fetchBeritaCty(): Promise<string> {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
     
-    const response = await fetch(URL_KEGIATAN_BBWSCTY);
+    const response = await fetch(URL_KEGIATAN_BBWSCTY, {
+      signal: controller.signal,
+    });
+    
+    clearTimeout(timeoutId);
+    
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    
     const data = await response.text();
     return data;
+    
   } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error; // Re-throw the error for further handling
+    console.error(`Error fetching berita from ${URL_KEGIATAN_BBWSCTY}:`, error);
+    return ''; // Return empty string instead of throwing
   }
 }
 

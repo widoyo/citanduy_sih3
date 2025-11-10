@@ -5,8 +5,14 @@ import { URL_PRAKIRAAN_JABAR, URL_PRAKIRAAN_JATENG } from '$env/static/private';
 
 export const GET = async ({request, platform}) => {
     const beritaHtml = await fetchBeritaCty();
-    const berita = await getArticles(beritaHtml);
-    await platform.env.KV.put('berita_cty', JSON.stringify(berita));
+    let berita = [];
+    
+    if (beritaHtml) {
+        berita = await getArticles(beritaHtml);
+        await platform.env.KV.put('berita_cty', JSON.stringify(berita));
+    } else {
+        console.warn('Berita HTML is empty, skipping article parsing');
+    }
 
     const prakiraanHtml = await fetchPrakiraan(URL_PRAKIRAAN_JABAR);
     const prakiraanList = await parsePrakiraan(prakiraanHtml);

@@ -24,7 +24,14 @@ export const load: PageServerLoad = async (event) => {
     const beritaCty = await kv.get('berita_cty');
 
     //const beritaHtml = await fetchBeritaCty();
-    const berita = JSON.parse(beritaCty || '[]');
+    let berita = [];
+    
+    try {
+        berita = JSON.parse(beritaCty ?? '[]');
+    } catch (error) {
+        console.error('Error parsing berita_cty from KV:', error);
+        berita = [];
+    }
 
     // Fetch rain data
     // and wlevel data
