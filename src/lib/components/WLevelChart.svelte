@@ -17,6 +17,20 @@
     return `${x},${y}`;
   }).join(' '));
   
+  // Create area path (line + bottom edge)
+  let areaPath = $derived.by(() => {
+    const linePoints = data.map((value, i) => {
+      const x = padding + (i / (data.length - 1)) * (width - padding * 2);
+      const y = padding + (1 - (value - minValue) / range) * (height - padding * 2);
+      return `${x},${y}`;
+    });
+    
+    const lastX = padding + (width - padding * 2);
+    const bottomY = height - padding;
+    
+    return `M ${padding},${bottomY} L ${linePoints[0]} ${linePoints.slice(1).map(p => `L ${p}`).join(' ')} L ${lastX},${bottomY} Z`;
+  });
+  
   let zeroY = $derived(padding + (1 - (0 - minValue) / range) * (height - padding * 2));
   
   let shY = $derived(sh !== undefined && sh !== null ? padding + (1 - (sh - minValue) / range) * (height - padding * 2) : null);
@@ -25,6 +39,20 @@
 </script>
 
 <svg {width} {height} viewBox="0 0 {width} {height}">
+  <defs>
+    <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Area fill -->
+  <path
+    d={areaPath}
+    fill="url(#areaGradient)"
+  />
+  
+  <!-- Zero baseline -->
   <line
     x1={padding}
     y1={zeroY}
@@ -34,6 +62,7 @@
     stroke-width="1"
   />
   
+  <!-- Threshold lines -->
   {#if shY !== null}
     <line
       x1={padding}
@@ -70,6 +99,7 @@
     />
   {/if}
   
+  <!-- Line stroke -->
   <polyline
     points={points}
     fill="none"
