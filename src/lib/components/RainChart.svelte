@@ -6,8 +6,20 @@
   
   // Reorder data starting from hour 7 to hour 6 next day
   const orderedHours = [...Array(17).keys()].map(i => i + 7).concat([...Array(7).keys()]);
-  const orderedData = orderedHours.map(h => telemetri.rain[h]?.rain);
-  
+  const orderedData = orderedHours.map((h, index) => {
+    const d = new Date();
+    // If the hour is small (0-6) and it's at the end of our array, 
+    // it likely refers to "tomorrow"
+    if (index >= 17) {
+      d.setDate(d.getDate() + 1);
+    }
+    
+    const dateStr = d.toISOString().split('T')[0];
+    const hourStr = h.toString().padStart(2, '0');
+    const isoKey = `${dateStr}T${hourStr}:00:00`;
+    
+    return telemetri.rain[isoKey]?.rain || 0;
+  });
   const barWidth = width / 24;
   
   const bars = orderedData.map((rain, i) => {
