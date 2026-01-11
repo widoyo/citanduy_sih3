@@ -3,7 +3,7 @@
   const width = 64;
   const height = 34; // Increased height to accommodate labels (24 + 10)
   const chartHeight = 24; // Original drawing area
-  const maxRain = 50;
+  const maxRain = 20;
   
   // 1. Simplify Data Keys
   const simplifiedRain = Object.fromEntries(
